@@ -101,9 +101,15 @@ const GU_ORDER=['동구','중구','서구','유성구','대덕구'];
 let map,ovs={};
 
 const priceOf=s=>(P[s.id]||{})[st.fuel];
+// 고른 연료를 파는 곳인지: 가격이 있으면 가격 기준, 가격이 하나도 없으면 LPG 충전소 여부로 판단
+const PK=['gasoline','diesel','lpg','premium'];
+function sells(s,f){const p=P[s.id]||{};
+  if(PK.some(k=>p[k]))return !!p[f]||(f==='gasoline'&&!!p.premium);
+  const lpg=s.lpg||(/LPG|충전소/i.test(s.name)&&!/주유소/.test(s.name));
+  return f==='lpg'?lpg:!lpg;}
 function visible(){
   const q=st.q.trim();
-  let v=S.filter(s=>(st.gu==='전체'||s.gu===st.gu)&&(st.stat==='all'||s.status===st.stat)&&(!q||s.name.includes(q)||s.addr.includes(q)||(s.ontong_name||'').includes(q)));
+  let v=S.filter(s=>sells(s,st.fuel)&&(st.gu==='전체'||s.gu===st.gu)&&(st.stat==='all'||s.status===st.stat)&&(!q||s.name.includes(q)||s.addr.includes(q)||(s.ontong_name||'').includes(q)));
   v.sort((a,b)=>st.sort==='name'?a.name.localeCompare(b.name,'ko'):(priceOf(a)||1e9)-(priceOf(b)||1e9));
   return v;
 }

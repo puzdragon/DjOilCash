@@ -39,6 +39,10 @@ header p{margin:4px 0 0;font-size:12px;opacity:.85}
 .bub.lpg{border-color:#1c7ed6}.bub.lpg::after{border-top-color:#1c7ed6}
 .bub.low{background:var(--low);border-color:var(--low);color:#fff}.bub.low::after{border-top-color:var(--low)}
 .bub.sel{z-index:10;outline:3px solid #ffd43b}
+.bub.cand{border-style:dashed;border-color:#868e96;color:#495057}.bub.cand::after{border-top-color:#868e96}
+.no.cand{background:#adb5bd}
+.tag{display:inline-block;font-size:10px;font-weight:700;border-radius:4px;padding:0 4px;margin-left:4px;vertical-align:1px}
+.tag.v{background:var(--gl);color:var(--gd)}.tag.c{background:#f1f3f5;color:#868e96}
 .card{position:absolute;left:12px;right:12px;bottom:12px;max-width:420px;background:#fff;border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,.2);padding:14px 16px;display:none;z-index:5}
 .card h3{margin:0 0 2px;font-size:16px}
 .card .x{position:absolute;right:10px;top:8px;border:0;background:none;font-size:20px;cursor:pointer;color:var(--mute)}
@@ -62,6 +66,11 @@ header p{margin:4px 0 0;font-size:12px;opacity:.85}
     <div class="ctl">
       <div class="search"><input id="q" type="search" placeholder="주유소명 또는 주소 검색"></div>
       <div class="chips" id="gu"></div>
+      <div class="chips" id="stat">
+        <button class="chip on" data-s="all">전체</button>
+        <button class="chip" data-s="verified">캐시백 확인됨</button>
+        <button class="chip" data-s="candidate">미확인 후보</button>
+      </div>
       <div class="chips" id="fuel">
         <button class="chip on" data-f="gasoline">휘발유</button>
         <button class="chip" data-f="diesel">경유</button>
@@ -71,7 +80,7 @@ header p{margin:4px 0 0;font-size:12px;opacity:.85}
         <select id="sort"><option value="price">가격 낮은 순</option><option value="name">이름 순</option></select></div>
     </div>
     <div id="list"></div>
-    <div class="note">가격: 오피넷(한국석유공사) · 캐시백 적용 여부는 온통대전 앱에서 확인하세요.</div>
+    <div class="note">가격: 오피넷(한국석유공사) · 후보 목록: 대전시 온통대전 신청 가맹점 API<br>초록 = 캐시백 확인됨, 회색 점선 = 온통대전 가맹점이지만 캐시백 미확인(연매출 30억 초과 시 미지급). 결제 전 매장에서 확인하세요.</div>
   </div>
   <div id="map">
     <div id="mapEl"></div>
@@ -87,13 +96,14 @@ const FUEL={gasoline:'휘발유',diesel:'경유',lpg:'LPG',premium:'고급휘발
 const BRAND={SKE:'SK에너지',GSC:'GS칼텍스',HDO:'HD현대오일뱅크',SOL:'S-OIL',RTE:'알뜰',RTX:'고속도로알뜰',NHO:'농협알뜰',ETC:'자가상표',E1G:'E1',SKG:'SK가스',RTO:'자영알뜰'};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const won=n=>n?n.toLocaleString('ko-KR')+'원':'';
-let S=[],P={},st={gu:'전체',fuel:'gasoline',q:'',sort:'price',sel:null};
+let S=[],P={},st={gu:'전체',stat:'all',fuel:'gasoline',q:'',sort:'price',sel:null};
+const GU_ORDER=['동구','중구','서구','유성구','대덕구'];
 let map,ovs={};
 
 const priceOf=s=>(P[s.id]||{})[st.fuel];
 function visible(){
   const q=st.q.trim();
-  let v=S.filter(s=>(st.gu==='전체'||s.gu===st.gu)&&(!q||s.name.includes(q)||s.addr.includes(q)));
+  let v=S.filter(s=>(st.gu==='전체'||s.gu===st.gu)&&(st.stat==='all'||s.status===st.stat)&&(!q||s.name.includes(q)||s.addr.includes(q)||(s.ontong_name||'').includes(q)));
   v.sort((a,b)=>st.sort==='name'?a.name.localeCompare(b.name,'ko'):(priceOf(a)||1e9)-(priceOf(b)||1e9));
   return v;
 }
@@ -102,22 +112,22 @@ function lowSet(v){const ps=v.map(priceOf).filter(Boolean).sort((a,b)=>a-b);cons
 function render(){
   const v=visible(),isLow=lowSet(v),withP=v.filter(priceOf).length;
   document.getElementById('cnt').textContent=`${v.length}곳 · ${FUEL[st.fuel]} 가격 ${withP}곳`;
-  document.getElementById('list').innerHTML=v.map(s=>{const p=priceOf(s);
-    return `<div class="it${st.sel===s.id?' on':''}" data-id="${s.id}"><div class="no${s.lpg?' lpg':''}">${s.id}</div>
-    <div><div class="nm">${esc(s.name)}</div><div class="ad">${esc(s.addr.replace('대전 ',''))}</div></div>
+  document.getElementById('list').innerHTML=v.map((s,i)=>{const p=priceOf(s),cand=s.status==='candidate';
+    return `<div class="it${st.sel===s.id?' on':''}" data-id="${esc(s.id)}"><div class="no${cand?' cand':s.lpg?' lpg':''}">${i+1}</div>
+    <div><div class="nm">${esc(s.name)}<span class="tag ${cand?'c':'v'}">${cand?'미확인':'캐시백'}</span></div><div class="ad">${esc(s.addr.replace('대전 ',''))}</div></div>
     <div class="pr${p?(isLow(p)?' low':''):' na'}">${p?won(p):'정보 없음'}${p?`<small>${FUEL[st.fuel]}</small>`:''}</div></div>`}).join('');
   if(!map)return;
   const ids=new Set(v.map(s=>s.id));
   S.forEach(s=>{const o=ovs[s.id];if(!o)return;
     if(!ids.has(s.id)){o.setMap(null);return}
     const p=priceOf(s),el=o.getContent();
-    el.className='bub'+(s.lpg?' lpg':'')+(p&&isLow(p)?' low':'')+(st.sel===s.id?' sel':'');
+    el.className='bub'+(s.status==='candidate'?' cand':s.lpg?' lpg':'')+(p&&isLow(p)?' low':'')+(st.sel===s.id?' sel':'');
     el.textContent=p?p.toLocaleString('ko-KR'):s.name.replace(/\(주\)|㈜/g,'').slice(0,6);
     o.setZIndex(st.sel===s.id?10:(p&&isLow(p)?5:1));o.setMap(map);});
 }
 
 function select(id,pan){
-  st.sel=id;const s=S.find(x=>x.id===id),p=P[id]||{};
+  const s=S.find(x=>String(x.id)===String(id));if(!s)return;st.sel=s.id;const p=P[s.id]||{};
   if(map&&pan){map.setLevel(Math.min(map.getLevel(),4));map.panTo(new kakao.maps.LatLng(s.lat,s.lng));}
   const rows=['gasoline','diesel','lpg','premium'].filter(k=>p[k]).map(k=>`<tr><td>${FUEL[k]}</td><td>${won(p[k])}</td></tr>`).join('');
   const kk=`https://map.kakao.com/link/to/${encodeURIComponent(s.name)},${s.lat},${s.lng}`;
@@ -125,11 +135,12 @@ function select(id,pan){
   const c=document.getElementById('card');
   c.innerHTML=`<button class="x" aria-label="닫기">×</button><h3>${esc(s.name)}</h3>
    <div class="ad">${esc(s.addr)}${p.brand?' · '+esc(BRAND[p.brand]||p.brand):''}${p.tel?' · '+esc(p.tel):''}</div>
+   <div class="ad">${s.status==='candidate'?'온통대전 가맹점 목록에 있음 · 캐시백 적립 여부 미확인':'캐시백 적립 확인된 주유소'}${s.ontong_name&&s.ontong_name!==s.name?' · 가맹점명: '+esc(s.ontong_name):''}</div>
    ${rows?`<table>${rows}</table>`:'<p class="ad">가격 정보가 없습니다.</p>'}
    <div class="btns"><a class="k" href="${kk}" target="_blank">카카오맵 길찾기</a><a class="n" href="${nv}" target="_blank">네이버지도</a></div>`;
   c.style.display='block';c.querySelector('.x').onclick=()=>{c.style.display='none';st.sel=null;render();};
   render();
-  const li=document.querySelector(`.it[data-id="${id}"]`);if(li)li.scrollIntoView({block:'nearest'});
+  const li=[...document.querySelectorAll('.it')].find(x=>x.dataset.id===String(id));if(li)li.scrollIntoView({block:'nearest'});
 }
 
 function initMap(){
@@ -143,19 +154,26 @@ function initMap(){
 }
 
 async function boot(){
-  S=await fetch('stations.json').then(r=>r.json());
-  try{const pr=await fetch('prices.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
-    P=pr.prices||{};document.getElementById('upd').textContent=`가격 기준: ${pr.updated} (오피넷)`;}
-  catch(e){document.getElementById('upd').textContent='가격 정보 없음 — update_prices.py를 실행하세요';}
-  const gus=['전체',...new Set(S.map(s=>s.gu))];
+  const upd=document.getElementById('upd');
+  try{const m=await fetch('data/map.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
+    S=m.stations;S.forEach(s=>{P[s.id]=Object.assign({brand:s.brand,tel:s.tel},s.prices)});
+    upd.textContent=`가격 기준: ${m.updated} (오피넷) · 확인됨 ${m.counts.verified} · 미확인 ${m.counts.candidate}`;}
+  catch(e){ // map.json이 아직 없으면 예전 파일로 표시
+    S=(await fetch('stations.json').then(r=>r.json())).map(s=>Object.assign(s,{status:'verified'}));
+    try{const pr=await fetch('prices.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
+      P=pr.prices||{};upd.textContent=`가격 기준: ${pr.updated} (오피넷)`;}
+    catch(e2){upd.textContent='가격 정보 없음';}}
+  const gus=['전체',...GU_ORDER.filter(g=>S.some(s=>s.gu===g))];
   document.getElementById('gu').innerHTML=gus.map(g=>`<button class="chip${g==='전체'?' on':''}" data-g="${g}">${g} ${g==='전체'?S.length:S.filter(s=>s.gu===g).length}</button>`).join('');
   document.getElementById('gu').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;st.gu=b.dataset.g;
     document.querySelectorAll('#gu .chip').forEach(x=>x.classList.toggle('on',x===b));render();};
+  document.getElementById('stat').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;st.stat=b.dataset.s;
+    document.querySelectorAll('#stat .chip').forEach(x=>x.classList.toggle('on',x===b));render();};
   document.getElementById('fuel').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;st.fuel=b.dataset.f;
     document.querySelectorAll('#fuel .chip').forEach(x=>x.classList.toggle('on',x===b));render();if(st.sel)select(st.sel,false);};
   document.getElementById('q').oninput=e=>{st.q=e.target.value;render();};
   document.getElementById('sort').onchange=e=>{st.sort=e.target.value;render();};
-  document.getElementById('list').onclick=e=>{const it=e.target.closest('.it');if(it)select(+it.dataset.id,true);};
+  document.getElementById('list').onclick=e=>{const it=e.target.closest('.it');if(it)select(it.dataset.id,true);};
   render();
   if(window.kakao&&kakao.maps){kakao.maps.load(initMap);}else{document.getElementById('err').style.display='grid';}
 }

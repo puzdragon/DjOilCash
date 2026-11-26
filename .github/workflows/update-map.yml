@@ -1,0 +1,41 @@
+name: Update map data
+
+on:
+  schedule:
+    # 하루 1회 07:00 (한국 시간). 오피넷 무료 키의 하루 호출 한도 때문에 1회로 둔다.
+    - cron: "0 22 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-map
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyproj
+      - name: Build data/map.json
+        env:
+          OPINET_API_KEY: ${{ secrets.OPINET_KEY }}
+        run: |
+          if [ -z "$OPINET_API_KEY" ]; then
+            echo "::error::저장소 Settings > Secrets and variables > Actions 에 OPINET_KEY 를 등록해 주세요."
+            exit 1
+          fi
+          python scripts/build_map.py
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          git diff --staged --quiet && exit 0
+          git commit -m "자동 갱신: 주유소 목록·가격 $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M')"
+          git push

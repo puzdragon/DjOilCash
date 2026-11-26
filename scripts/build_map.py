@@ -1,5 +1,5 @@
 """
-대전 온통대전 주유소 지도 데이터 만들기 (GitHub Actions에서 하루 2회 실행)
+대전 온통대전 주유소 지도 데이터 만들기 (GitHub Actions에서 하루 1회 실행)
 
 1) 대전시 '온통대전 신청 가맹점 목록' API(키 불필요)에서 이름에 주유소·충전소가 들어간 곳을 뽑는다.
    이 API에는 업종과 캐시백 여부 항목이 없어서, 이 곳들은 '미확인 후보'다.
@@ -34,7 +34,7 @@ PRODS = {"B027": "gasoline", "D047": "diesel", "K015": "lpg"}
 BBOX = (127.24, 36.18, 127.57, 36.50)
 GRID_STEP = 7000
 RADIUS = 5000
-MAX_DETAIL_CALLS = int(os.environ.get("MAX_DETAIL_CALLS", "200"))
+MAX_DETAIL_CALLS = int(os.environ.get("MAX_DETAIL_CALLS", "80"))
 
 
 # ---------- 온통대전 ----------

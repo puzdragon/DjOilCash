@@ -2,14 +2,9 @@ name: Update map data
 
 on:
   schedule:
-    # 하루 2회: 07:00, 17:00 (한국 시간)
+    # 하루 1회 07:00 (한국 시간). 오피넷 무료 키의 하루 호출 한도 때문에 1회로 둔다.
     - cron: "0 22 * * *"
-    - cron: "0 8 * * *"
   workflow_dispatch: {}
-  # 시험용: 작업 브랜치에 올리면 한 번 실행 (머지 전에 지움)
-  push:
-    branches: [claude/ontong-api]
-    paths: [scripts/build_map.py, .github/workflows/update-map.yml]
 
 permissions:
   contents: write

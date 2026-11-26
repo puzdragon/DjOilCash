@@ -2,7 +2,7 @@ name: Probe Ontong API (temporary)
 on:
   push:
     branches: [claude/ontong-api]
-    paths: [.github/workflows/probe-ontong.yml]
+    paths: [.github/workflows/probe-ontong.yml, scripts/fetch_ontong.py]
 permissions:
   contents: write
 jobs:
@@ -10,15 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Fetch sample
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch candidates
         run: |
           mkdir -p probe
-          P="/openApi/6300000/getOtdjReqstMrhst/getOtdjReqstMrhstlist?pageNo=1&numOfRows=30"
-          (curl -sSv -m 60 "https://bigdata.daejeon.go.kr$P" -o /dev/null 2>&1 | grep -iE "ssl|certif|issuer|subject|error") > probe/tls.txt || true
-          (echo | openssl s_client -connect bigdata.daejeon.go.kr:443 -servername bigdata.daejeon.go.kr 2>&1 | grep -E "s:|i:|Verify|verify") > probe/chain.txt || true
-          curl -sS -m 120 -D probe/headers_http.txt "http://bigdata.daejeon.go.kr$P" -o probe/http.txt 2> probe/http_err.txt || true
-          head -c 20000 probe/http.txt > probe/http_head.txt || true
-          rm -f probe/http.txt probe/sample_head.txt probe/headers.txt probe/error.txt
+          python scripts/fetch_ontong.py probe/ontong_candidates.json
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"

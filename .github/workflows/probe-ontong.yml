@@ -1,0 +1,26 @@
+name: Probe Ontong API (temporary)
+on:
+  push:
+    branches: [claude/ontong-api]
+    paths: [.github/workflows/probe-ontong.yml]
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch sample
+        run: |
+          mkdir -p probe
+          URL="https://bigdata.daejeon.go.kr/openApi/6300000/getOtdjReqstMrhst/getOtdjReqstMrhstlist"
+          curl -sS -m 120 -D probe/headers.txt "$URL?pageNo=1&numOfRows=30" -o probe/sample.txt || echo "curl failed: $?" > probe/error.txt
+          head -c 20000 probe/sample.txt > probe/sample_head.txt || true
+          rm -f probe/sample.txt
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add probe
+          git commit -m "probe: Ontong API sample" || true
+          git push

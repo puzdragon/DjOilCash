@@ -141,20 +141,34 @@ def main():
 
     cache_path = os.path.join(DATA, "opinet_detail_cache.json")
     cache = json.load(open(cache_path, encoding="utf-8")) if os.path.exists(cache_path) else {}
-    calls = 0
-    for uni in scanned:
-        if uni in cache or calls >= MAX_DETAIL_CALLS:
-            continue
+    verified = json.load(open(os.path.join(ROOT, "stations.json"), encoding="utf-8"))
+    ids_path = os.path.join(ROOT, "opinet_ids.json")
+    ids = json.load(open(ids_path, encoding="utf-8")) if os.path.exists(ids_path) else {}
+    verified_uni = {(ids.get(str(st["id"])) or {}).get("uni") for st in verified} - {None}
+
+    # 상세 조회는 하루 호출 한도를 아끼려고, 온통대전 후보와 이름이 비슷한 곳만 한다.
+    cand_names = [norm_name(c["mrhst_nm"]) for c in cands]
+    def looks_like_candidate(name):
+        n = norm_name(name)
+        return any(difflib.SequenceMatcher(None, n, c).ratio() >= 0.6 for c in cand_names)
+    wanted = [u for u in scanned if u not in cache and u not in verified_uni and looks_like_candidate(scanned[u]["name"])]
+    calls, empty_streak = 0, 0
+    for uni in wanted:
+        if calls >= MAX_DETAIL_CALLS or empty_streak >= 10:
+            if empty_streak >= 10:
+                print("  ! 상세 조회가 연속으로 비어 있어 멈춤 (하루 호출 한도일 수 있음)")
+            break
         d = opinet("detailById.do", key, id=uni)
         calls += 1
+        empty_streak = 0 if d else empty_streak + 1
         if d:
             d = d[0]
             cache[uni] = {"name": d.get("OS_NM"), "new_adr": d.get("NEW_ADR"), "van_adr": d.get("VAN_ADR"),
                           "tel": d.get("TEL") if d.get("TEL") not in ("0", "") else None,
                           "lpg_yn": d.get("LPG_YN")}
-        time.sleep(0.1)
+        time.sleep(0.3)
     json.dump(cache, open(cache_path, "w", encoding="utf-8"), ensure_ascii=False, indent=1, sort_keys=True)
-    pending = [u for u in scanned if u not in cache]
+    pending = [u for u in wanted if u not in cache]
     print(f"상세 조회 {calls}회, 아직 상세 미조회 {len(pending)}곳")
 
     # 오피넷 주유소 중 대전 소재만, 주소 키로 색인
@@ -184,6 +198,11 @@ def main():
     out = {}
 
     def add(uni, status, name, ontong_name=None, addr=None, gu=None, fallback=None):
+        if uni and status == "verified" and uni in scanned and uni not in daejeon:
+            # 직접 확인한 곳은 상세 조회 없이 stations.json의 주소를 쓴다
+            daejeon[uni] = scanned[uni]
+            cache.setdefault(uni, {"name": scanned[uni]["name"], "new_adr": addr,
+                                   "lpg_yn": "Y" if fallback and fallback.get("lpg") else "N"})
         if uni and uni in daejeon:
             s, c = daejeon[uni], cache[uni]
             lng, lat = from_katec.transform(s["x"], s["y"])
@@ -202,9 +221,6 @@ def main():
             out.setdefault(fallback["id"], fallback)
 
     # 직접 확인한 캐시백 주유소
-    verified = json.load(open(os.path.join(ROOT, "stations.json"), encoding="utf-8"))
-    ids_path = os.path.join(ROOT, "opinet_ids.json")
-    ids = json.load(open(ids_path, encoding="utf-8")) if os.path.exists(ids_path) else {}
     for st in verified:
         uni = (ids.get(str(st["id"])) or {}).get("uni") or match(st["name"], st["addr"], st["gu"])
         add(uni, "verified", st["name"], addr=st["addr"], gu=st["gu"],

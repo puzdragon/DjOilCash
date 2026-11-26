@@ -13,14 +13,16 @@ jobs:
       - name: Fetch sample
         run: |
           mkdir -p probe
-          URL="https://bigdata.daejeon.go.kr/openApi/6300000/getOtdjReqstMrhst/getOtdjReqstMrhstlist"
-          curl -sS -m 120 -D probe/headers.txt "$URL?pageNo=1&numOfRows=30" -o probe/sample.txt || echo "curl failed: $?" > probe/error.txt
-          head -c 20000 probe/sample.txt > probe/sample_head.txt || true
-          rm -f probe/sample.txt
+          P="/openApi/6300000/getOtdjReqstMrhst/getOtdjReqstMrhstlist?pageNo=1&numOfRows=30"
+          (curl -sSv -m 60 "https://bigdata.daejeon.go.kr$P" -o /dev/null 2>&1 | grep -iE "ssl|certif|issuer|subject|error") > probe/tls.txt || true
+          (echo | openssl s_client -connect bigdata.daejeon.go.kr:443 -servername bigdata.daejeon.go.kr 2>&1 | grep -E "s:|i:|Verify|verify") > probe/chain.txt || true
+          curl -sS -m 120 -D probe/headers_http.txt "http://bigdata.daejeon.go.kr$P" -o probe/http.txt 2> probe/http_err.txt || true
+          head -c 20000 probe/http.txt > probe/http_head.txt || true
+          rm -f probe/http.txt probe/sample_head.txt probe/headers.txt probe/error.txt
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add probe
+          git add -A probe
           git commit -m "probe: Ontong API sample" || true
           git push

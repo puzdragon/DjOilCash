@@ -1,0 +1,36 @@
+name: Update Ontong candidates
+
+# 온통대전 API에서 주유소·충전소 후보 목록만 받는다. 오피넷을 부르지 않는다.
+on:
+  push:
+    branches: [main]
+    paths: [scripts/build_candidates.py, .github/workflows/update-candidates.yml]
+  schedule:
+    - cron: "30 21 * * *"   # 매일 06:30 (한국 시간), 오피넷 갱신 전
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-map
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/build_candidates.py
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ontong_candidates.json
+          git diff --staged --quiet && exit 0
+          git commit -m "자동 갱신: 온통대전 주유소 후보 $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M')"
+          git pull --rebase
+          git push

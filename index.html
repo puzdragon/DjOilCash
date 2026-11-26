@@ -99,7 +99,7 @@ header p{margin:4px 0 0;font-size:12px;opacity:.85}
   </div>
 </div>
 
-<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=ea0729ae6a4d26b29ed19bb05c5c4be1&autoload=false"></script>
+<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=ea0729ae6a4d26b29ed19bb05c5c4be1&autoload=false&libraries=services"></script>
 <script>
 {
 const FUEL={gasoline:'휘발유',diesel:'경유',lpg:'LPG',premium:'고급휘발유'};
@@ -152,7 +152,7 @@ function select(id,pan){
   c.innerHTML=`<button class="x" aria-label="닫기">×</button><h3>${esc(s.name)}</h3>
    <div class="ad">${esc(s.addr)}${p.brand?' · '+esc(BRAND[p.brand]||p.brand):''}${p.tel?' · '+esc(p.tel):''}</div>
    <div class="ad">${s.status==='candidate'?'온통대전 가맹점 목록에 있음 · 캐시백 적립 여부 미확인':'캐시백 적립 확인된 주유소'}${s.ontong_name&&s.ontong_name!==s.name?' · 가맹점명: '+esc(s.ontong_name):''}</div>
-   ${rows?`<table>${rows}</table>`:'<p class="ad">가격 정보가 없습니다.</p>'}
+   ${rows?`<table>${rows}</table>`:`<p class="ad">${s.status==='candidate'?'가격 정보가 아직 없습니다. 오피넷 매일 아침 갱신 때 채워집니다.':'가격 정보가 없습니다.'}</p>`}
    <div class="btns"><a class="k" href="${kk}" target="_blank">카카오맵 길찾기</a><a class="n" href="${nv}" target="_blank">네이버지도</a></div>`;
   c.style.display='block';c.querySelector('.x').onclick=()=>{c.style.display='none';st.sel=null;render();};
   render();
@@ -163,24 +163,70 @@ function initMap(){
   map=new kakao.maps.Map(document.getElementById('mapEl'),{center:new kakao.maps.LatLng(36.34,127.34),level:7});
   map.addControl(new kakao.maps.ZoomControl(),kakao.maps.ControlPosition.RIGHT);
   const b=new kakao.maps.LatLngBounds();
-  S.forEach(s=>{const pos=new kakao.maps.LatLng(s.lat,s.lng);b.extend(pos);
-    const el=document.createElement('div');el.className='bub';el.onclick=()=>select(s.id,false);
-    ovs[s.id]=new kakao.maps.CustomOverlay({position:pos,content:el,yAnchor:1});});
-  map.setBounds(b);render();
+  S.forEach(s=>{b.extend(new kakao.maps.LatLng(s.lat,s.lng));addOverlay(s);});
+  map.setBounds(b);render();placeCandidates();
+}
+
+function guChips(){
+  const gus=['전체',...GU_ORDER.filter(g=>S.some(s=>s.gu===g))];
+  document.getElementById('gu').innerHTML=gus.map(g=>`<button class="chip${g===st.gu?' on':''}" data-g="${g}">${g} ${g==='전체'?S.length:S.filter(s=>s.gu===g).length}</button>`).join('');
+}
+function addOverlay(s){
+  if(!map||ovs[s.id])return;
+  const el=document.createElement('div');el.className='bub';el.onclick=()=>select(s.id,false);
+  ovs[s.id]=new kakao.maps.CustomOverlay({position:new kakao.maps.LatLng(s.lat,s.lng),content:el,yAnchor:1});
+}
+
+// ---- 좌표 없는 온통대전 후보: 카카오 주소 검색으로 위치를 찾아 회색 후보로 추가 (가격은 오피넷 갱신 때 채워짐) ----
+let pendingCands=[];
+const normName=n=>String(n||'').replace(/\(주\)|㈜|주식회사|\(유\)|\s|주유소|충전소|셀프|self/gi,'');
+const roadKey=a=>{const m=String(a||'').replace(/\(.*?\)/g,' ').match(/([가-힣A-Za-z0-9]+(?:로|길))\s*(\d+(?:-\d+)?)/);return m?m[1]+m[2]:null;};
+function geoCache(k,v){try{if(v===undefined)return JSON.parse(localStorage.getItem('geo:'+k)||'null');localStorage.setItem('geo:'+k,JSON.stringify(v));}catch(e){return null}}
+function geocode(c){
+  return new Promise(res=>{
+    const hit=geoCache(c.addr);if(hit)return res(hit);
+    const done=v=>{if(v)geoCache(c.addr,v);res(v)};
+    const inDj=(y,x)=>y>36.15&&y<36.52&&x>127.22&&x<127.6;
+    new kakao.maps.services.Geocoder().addressSearch(c.addr,(r,s)=>{
+      if(s===kakao.maps.services.Status.OK&&inDj(+r[0].y,+r[0].x))return done({lat:+r[0].y,lng:+r[0].x});
+      new kakao.maps.services.Places().keywordSearch('대전 '+(c.gu||'')+' '+c.name,(r2,s2)=>{
+        const ok=s2===kakao.maps.services.Status.OK&&r2.find(x=>inDj(+x.y,+x.x));
+        done(ok?{lat:+ok.y,lng:+ok.x}:null);});
+    });
+  });
+}
+async function placeCandidates(){
+  if(!pendingCands.length||!(window.kakao&&kakao.maps&&kakao.maps.services))return;
+  const names=new Set(S.map(s=>normName(s.name))),roads=new Set(S.map(s=>roadKey(s.addr)).filter(Boolean));
+  const todo=pendingCands.filter(c=>!names.has(normName(c.name))&&!(roadKey(c.addr)&&roads.has(roadKey(c.addr))));
+  pendingCands=[];let added=0;
+  for(let i=0;i<todo.length;i+=8){
+    const part=todo.slice(i,i+8),locs=await Promise.all(part.map(geocode));
+    part.forEach((c,j)=>{const g=locs[j];if(!g)return;
+      const s={id:'o'+(i+j),name:c.name,ontong_name:c.name,addr:c.addr,gu:c.gu,lat:g.lat,lng:g.lng,
+        lpg:/LPG|충전소/i.test(c.name)&&!/주유소/.test(c.name),status:'candidate',prices:{}};
+      S.push(s);P[s.id]={};addOverlay(s);added++;});
+    guChips();render();
+  }
+  if(!added)return;
+  document.getElementById('upd').textContent+=` · 가격 없는 온통대전 후보 ${added}곳`;
+  const bb=new kakao.maps.LatLngBounds();S.forEach(s=>bb.extend(new kakao.maps.LatLng(s.lat,s.lng)));map.setBounds(bb);
 }
 
 async function boot(){
   const upd=document.getElementById('upd');
   try{const m=await fetch('data/map.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
     S=m.stations;S.forEach(s=>{P[s.id]=Object.assign({brand:s.brand,tel:s.tel},s.prices)});
+    pendingCands=m.unmatched||[];
     upd.textContent=`가격 기준: ${m.updated} (오피넷) · 확인됨 ${m.counts.verified} · 미확인 ${m.counts.candidate}`;}
   catch(e){ // map.json이 아직 없으면 예전 파일로 표시
     S=(await fetch('stations.json').then(r=>r.json())).map(s=>Object.assign(s,{status:'verified'}));
     try{const pr=await fetch('prices.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
       P=pr.prices||{};upd.textContent=`가격 기준: ${pr.updated} (오피넷)`;}
-    catch(e2){upd.textContent='가격 정보 없음';}}
-  const gus=['전체',...GU_ORDER.filter(g=>S.some(s=>s.gu===g))];
-  document.getElementById('gu').innerHTML=gus.map(g=>`<button class="chip${g==='전체'?' on':''}" data-g="${g}">${g} ${g==='전체'?S.length:S.filter(s=>s.gu===g).length}</button>`).join('');
+    catch(e2){upd.textContent='가격 정보 없음';}
+    try{pendingCands=(await fetch('data/ontong_candidates.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()})).candidates||[];}
+    catch(e3){}}
+  guChips();
   document.getElementById('gu').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;st.gu=b.dataset.g;
     document.querySelectorAll('#gu .chip').forEach(x=>x.classList.toggle('on',x===b));render();};
   document.getElementById('stat').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;st.stat=b.dataset.s;

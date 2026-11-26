@@ -77,9 +77,9 @@ header p{margin:4px 0 0;font-size:12px;opacity:.85}
       <div class="search"><input id="q" type="search" placeholder="주유소명 또는 주소 검색"></div>
       <div class="chips" id="gu"></div>
       <div class="chips" id="stat">
-        <button class="chip on" data-s="all">전체</button>
-        <button class="chip" data-s="verified">캐시백 확인됨</button>
-        <button class="chip" data-s="candidate">미확인 후보</button>
+        <button class="chip on" data-s="verified">캐시백 적립 주유소</button>
+        <button class="chip" data-s="candidate">미확인 후보 보기</button>
+        <button class="chip" data-s="all">전체</button>
       </div>
       <div class="chips" id="fuel">
         <button class="chip on" data-f="gasoline">휘발유</button>
@@ -90,7 +90,7 @@ header p{margin:4px 0 0;font-size:12px;opacity:.85}
         <select id="sort"><option value="price">가격 낮은 순</option><option value="name">이름 순</option></select></div>
     </div>
     <div id="list"></div>
-    <div class="note">가격: 오피넷(한국석유공사) · 후보 목록: 대전시 온통대전 신청 가맹점 API<br>초록 = 캐시백 확인됨, 회색 점선 = 온통대전 가맹점이지만 캐시백 미확인(연매출 30억 초과 시 미지급). 결제 전 매장에서 확인하세요.</div>
+    <div class="note">가격: 오피넷(한국석유공사) · 후보 목록: 대전시 온통대전 신청 가맹점 API<br>기본 화면은 캐시백 적립이 확인된 주유소만 보여줍니다. 대전시 공개 자료에는 가맹점별 캐시백 여부가 없어서(연매출 30억 초과 가맹점은 미지급), 나머지 온통대전 가맹 주유소는 '미확인 후보 보기'에서 회색 점선으로 볼 수 있습니다. 결제 전 매장에서 확인하세요.</div>
   </div>
   <div id="map">
     <div id="mapEl"></div>
@@ -106,7 +106,7 @@ const FUEL={gasoline:'휘발유',diesel:'경유',lpg:'LPG',premium:'고급휘발
 const BRAND={SKE:'SK에너지',GSC:'GS칼텍스',HDO:'HD현대오일뱅크',SOL:'S-OIL',RTE:'알뜰',RTX:'고속도로알뜰',NHO:'농협알뜰',ETC:'자가상표',E1G:'E1',SKG:'SK가스',RTO:'자영알뜰'};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const won=n=>n?n.toLocaleString('ko-KR')+'원':'';
-let S=[],P={},st={gu:'전체',stat:'all',fuel:'gasoline',q:'',sort:'price',sel:null};
+let S=[],P={},st={gu:'전체',stat:'verified',fuel:'gasoline',q:'',sort:'price',sel:null};
 const GU_ORDER=['동구','중구','서구','유성구','대덕구'];
 let map,ovs={};
 

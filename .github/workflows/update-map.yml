@@ -29,10 +29,10 @@ jobs:
       - run: pip install pyproj
       - name: Build data/map.json
         env:
-          OPINET_API_KEY: ${{ secrets.OPINET_API_KEY }}
+          OPINET_API_KEY: ${{ secrets.OPINET_KEY }}
         run: |
           if [ -z "$OPINET_API_KEY" ]; then
-            echo "::error::저장소 Settings > Secrets and variables > Actions 에 OPINET_API_KEY 를 등록해 주세요."
+            echo "::error::저장소 Settings > Secrets and variables > Actions 에 OPINET_KEY 를 등록해 주세요."
             exit 1
           fi
           python scripts/build_map.py

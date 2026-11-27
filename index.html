@@ -77,8 +77,8 @@ header p{margin:4px 0 0;font-size:12px;opacity:.85}
       <div class="search"><input id="q" type="search" placeholder="주유소명 또는 주소 검색"></div>
       <div class="chips" id="gu"></div>
       <div class="chips" id="stat">
-        <button class="chip on" data-s="verified">캐시백 적립 주유소</button>
-        <button class="chip" data-s="candidate">미확인 후보 보기</button>
+        <button class="chip on" data-s="cash">캐시백 적립 주유소</button>
+        <button class="chip" data-s="excluded">캐시백 안 되는 곳</button>
         <button class="chip" data-s="all">전체</button>
       </div>
       <div class="chips" id="fuel">
@@ -90,7 +90,7 @@ header p{margin:4px 0 0;font-size:12px;opacity:.85}
         <select id="sort"><option value="price">가격 낮은 순</option><option value="name">이름 순</option></select></div>
     </div>
     <div id="list"></div>
-    <div class="note">가격: 오피넷(한국석유공사) · 후보 목록: 대전시 온통대전 신청 가맹점 API<br>기본 화면은 캐시백 적립이 확인된 주유소만 보여줍니다. 대전시 공개 자료에는 가맹점별 캐시백 여부가 없어서(연매출 30억 초과 가맹점은 미지급), 나머지 온통대전 가맹 주유소는 '미확인 후보 보기'에서 회색 점선으로 볼 수 있습니다. 결제 전 매장에서 확인하세요.</div>
+    <div class="note">가격: 오피넷 · 가맹점: 대전시 온통대전 가맹점 API · 캐시백 불가 목록: 대전사랑카드 고객센터 공지(연매출 30억 초과 가맹점, 매년 4월 1일 재산정)<br>온통대전 가맹 주유소 중 캐시백 불가 목록에 없는 곳을 캐시백 적립 주유소로 보여줍니다. 매일 아침 자동 갱신되며, 결제 전 매장에서 한 번 더 확인하세요.</div>
   </div>
   <div id="map">
     <div id="mapEl"></div>
@@ -106,10 +106,20 @@ const FUEL={gasoline:'휘발유',diesel:'경유',lpg:'LPG',premium:'고급휘발
 const BRAND={SKE:'SK에너지',GSC:'GS칼텍스',HDO:'HD현대오일뱅크',SOL:'S-OIL',RTE:'알뜰',RTX:'고속도로알뜰',NHO:'농협알뜰',ETC:'자가상표',E1G:'E1',SKG:'SK가스',RTO:'자영알뜰'};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const won=n=>n?n.toLocaleString('ko-KR')+'원':'';
-let S=[],P={},st={gu:'전체',stat:'verified',fuel:'gasoline',q:'',sort:'price',sel:null};
+let S=[],P={},st={gu:'전체',stat:'cash',fuel:'gasoline',q:'',sort:'price',sel:null};
 const GU_ORDER=['동구','중구','서구','유성구','대덕구'];
 let map,ovs={};
 
+// 캐시백: verified = 직접 확인한 곳, eligible = 온통대전 가맹점이고 연매출 30억 초과(캐시백 불가) 목록에 없음,
+// excluded = 캐시백 불가 목록에 있음, candidate = 불가 목록을 못 불러와 판단 못함
+const isCash=s=>s.status==='verified'||s.status==='eligible';
+const TAG={verified:['v','캐시백'],eligible:['v','캐시백'],excluded:['c','캐시백 없음'],candidate:['c','미확인']};
+const DESC={verified:'캐시백 적립 확인된 주유소',eligible:'온통대전 가맹점 · 캐시백 불가(연매출 30억 초과) 목록에 없음',
+  excluded:'연매출 30억 초과 가맹점이라 대전사랑카드 캐시백 없음',candidate:'온통대전 가맹점 · 캐시백 여부 미확인'};
+let EX=null; // 캐시백 불가 목록 {road:Set, name:Set, base}
+function isExcl(s){if(!EX)return false;const g=s.gu||'',rk=roadKey(s.addr),nm=normName(s.name);
+  if(rk&&EX.road.has(g+'|'+rk))return true;
+  return nm.length>=2&&EX.name.has(g+'|'+nm)&&(!rk||!EX.hasRoad.has(g+'|'+nm));}
 const priceOf=s=>(P[s.id]||{})[st.fuel];
 // 고른 연료를 파는 곳인지: 가격이 있으면 가격 기준, 가격이 하나도 없으면 LPG 충전소 여부로 판단
 const PK=['gasoline','diesel','lpg','premium'];
@@ -119,7 +129,7 @@ function sells(s,f){const p=P[s.id]||{};
   return f==='lpg'?lpg:!lpg;}
 function visible(){
   const q=st.q.trim();
-  let v=S.filter(s=>sells(s,st.fuel)&&(st.gu==='전체'||s.gu===st.gu)&&(st.stat==='all'||s.status===st.stat)&&(!q||s.name.includes(q)||s.addr.includes(q)||(s.ontong_name||'').includes(q)));
+  let v=S.filter(s=>sells(s,st.fuel)&&(st.gu==='전체'||s.gu===st.gu)&&(st.stat==='all'||(st.stat==='cash'?isCash(s):s.status===st.stat))&&(!q||s.name.includes(q)||s.addr.includes(q)||(s.ontong_name||'').includes(q)));
   v.sort((a,b)=>st.sort==='name'?a.name.localeCompare(b.name,'ko'):(priceOf(a)||1e9)-(priceOf(b)||1e9));
   return v;
 }
@@ -128,16 +138,16 @@ function lowSet(v){const ps=v.map(priceOf).filter(Boolean).sort((a,b)=>a-b);cons
 function render(){
   const v=visible(),isLow=lowSet(v),withP=v.filter(priceOf).length;
   document.getElementById('cnt').textContent=`${v.length}곳 · ${FUEL[st.fuel]} 가격 ${withP}곳`;
-  document.getElementById('list').innerHTML=v.map((s,i)=>{const p=priceOf(s),cand=s.status==='candidate';
+  document.getElementById('list').innerHTML=v.map((s,i)=>{const p=priceOf(s),cand=!isCash(s),tg=TAG[s.status]||TAG.candidate;
     return `<div class="it${st.sel===s.id?' on':''}" data-id="${esc(s.id)}"><div class="no${cand?' cand':s.lpg?' lpg':''}">${i+1}</div>
-    <div><div class="nm">${esc(s.name)}<span class="tag ${cand?'c':'v'}">${cand?'미확인':'캐시백'}</span></div><div class="ad">${esc(s.addr.replace('대전 ',''))}</div></div>
+    <div><div class="nm">${esc(s.name)}<span class="tag ${tg[0]}">${tg[1]}</span></div><div class="ad">${esc(s.addr.replace('대전 ',''))}</div></div>
     <div class="pr${p?(isLow(p)?' low':''):' na'}">${p?won(p):'정보 없음'}${p?`<small>${FUEL[st.fuel]}</small>`:''}</div></div>`}).join('');
   if(!map)return;
   const ids=new Set(v.map(s=>s.id));
   S.forEach(s=>{const o=ovs[s.id];if(!o)return;
     if(!ids.has(s.id)){o.setMap(null);return}
     const p=priceOf(s),el=o.getContent();
-    el.className='bub'+(s.status==='candidate'?' cand':s.lpg?' lpg':'')+(p&&isLow(p)?' low':'')+(st.sel===s.id?' sel':'');
+    el.className='bub'+(!isCash(s)?' cand':s.lpg?' lpg':'')+(p&&isLow(p)?' low':'')+(st.sel===s.id?' sel':'');
     el.textContent=p?p.toLocaleString('ko-KR'):s.name.replace(/\(주\)|㈜/g,'').slice(0,6);
     o.setZIndex(st.sel===s.id?10:(p&&isLow(p)?5:1));o.setMap(map);});
 }
@@ -151,8 +161,8 @@ function select(id,pan){
   const c=document.getElementById('card');
   c.innerHTML=`<button class="x" aria-label="닫기">×</button><h3>${esc(s.name)}</h3>
    <div class="ad">${esc(s.addr)}${p.brand?' · '+esc(BRAND[p.brand]||p.brand):''}${p.tel?' · '+esc(p.tel):''}</div>
-   <div class="ad">${s.status==='candidate'?'온통대전 가맹점 목록에 있음 · 캐시백 적립 여부 미확인':'캐시백 적립 확인된 주유소'}${s.ontong_name&&s.ontong_name!==s.name?' · 가맹점명: '+esc(s.ontong_name):''}</div>
-   ${rows?`<table>${rows}</table>`:`<p class="ad">${s.status==='candidate'?'가격 정보가 아직 없습니다. 오피넷 매일 아침 갱신 때 채워집니다.':'가격 정보가 없습니다.'}</p>`}
+   <div class="ad">${DESC[s.status]||DESC.candidate}${s.status==='excluded'&&EX&&EX.base?' ('+EX.base+' 기준)':''}${s.ontong_name&&s.ontong_name!==s.name?' · 가맹점명: '+esc(s.ontong_name):''}</div>
+   ${rows?`<table>${rows}</table>`:`<p class="ad">${s.status==='verified'?'가격 정보가 없습니다.':'가격 정보가 아직 없습니다. 오피넷 매일 아침 갱신 때 채워집니다.'}</p>`}
    <div class="btns"><a class="k" href="${kk}" target="_blank">카카오맵 길찾기</a><a class="n" href="${nv}" target="_blank">네이버지도</a></div>`;
   c.style.display='block';c.querySelector('.x').onclick=()=>{c.style.display='none';st.sel=null;render();};
   render();
@@ -204,17 +214,26 @@ async function placeCandidates(){
     const part=todo.slice(i,i+8),locs=await Promise.all(part.map(geocode));
     part.forEach((c,j)=>{const g=locs[j];if(!g)return;
       const s={id:'o'+(i+j),name:c.name,ontong_name:c.name,addr:c.addr,gu:c.gu,lat:g.lat,lng:g.lng,
-        lpg:/LPG|충전소/i.test(c.name)&&!/주유소/.test(c.name),status:'candidate',prices:{}};
+        lpg:/LPG|충전소/i.test(c.name)&&!/주유소/.test(c.name),prices:{}};
+      s.status=!EX?'candidate':isExcl(s)?'excluded':'eligible';
       S.push(s);P[s.id]={};addOverlay(s);added++;});
     guChips();render();
   }
   if(!added)return;
-  document.getElementById('upd').textContent+=` · 가격 없는 온통대전 후보 ${added}곳`;
+  document.getElementById('upd').textContent+=` · 가격 없는 온통대전 가맹점 ${added}곳`;
   const bb=new kakao.maps.LatLngBounds();S.forEach(s=>bb.extend(new kakao.maps.LatLng(s.lat,s.lng)));map.setBounds(bb);
 }
 
+async function loadExcluded(){
+  try{const x=await fetch('data/cashback_excluded.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
+    EX={road:new Set(),name:new Set(),hasRoad:new Set(),base:x.base_date};
+    (x.stations||[]).forEach(e=>{const g=e.gu||'',rk=roadKey(e.addr),nm=normName(e.name);
+      if(rk)EX.road.add(g+'|'+rk);if(nm.length>=2){EX.name.add(g+'|'+nm);if(rk)EX.hasRoad.add(g+'|'+nm);}});
+  }catch(e){EX=null;}
+}
 async function boot(){
   const upd=document.getElementById('upd');
+  await loadExcluded();
   try{const m=await fetch('data/map.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
     S=m.stations;S.forEach(s=>{P[s.id]=Object.assign({brand:s.brand,tel:s.tel},s.prices)});
     pendingCands=m.unmatched||[];
@@ -226,6 +245,8 @@ async function boot(){
     catch(e2){upd.textContent='가격 정보 없음';}
     try{pendingCands=(await fetch('data/ontong_candidates.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()})).candidates||[];}
     catch(e3){}}
+  S.forEach(s=>{if(isExcl(s))s.status='excluded';});
+  if(EX&&EX.base)upd.textContent+=` · 캐시백 기준: ${EX.base} 매출 등급`;
   guChips();
   document.getElementById('gu').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;st.gu=b.dataset.g;
     document.querySelectorAll('#gu .chip').forEach(x=>x.classList.toggle('on',x===b));render();};

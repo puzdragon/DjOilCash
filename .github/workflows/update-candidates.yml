@@ -1,6 +1,6 @@
 name: Update Ontong candidates
 
-# 온통대전 API에서 주유소·충전소 후보 목록만 받는다. 오피넷을 부르지 않는다.
+# 온통대전 API에서 주유소·충전소 후보 목록과 캐시백 불가(연매출 30억 초과) 목록을 받는다. 오피넷을 부르지 않는다.
 on:
   push:
     branches: [main]
@@ -29,7 +29,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/ontong_candidates.json
+          git add data/ontong_candidates.json data/cashback_excluded.json
           git diff --staged --quiet && exit 0
           git commit -m "자동 갱신: 온통대전 주유소 후보 $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M')"
           git pull --rebase

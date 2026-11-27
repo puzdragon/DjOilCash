@@ -14,6 +14,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 URL = ("http://bigdata.daejeon.go.kr/openApi/6300000/getOtdjReqstMrhst/"
        "getOtdjReqstMrhstlist?pageNo={page}&numOfRows={rows}")
 GAS_NAME = re.compile(r"주유소|충전소|LPG|lpg|오일뱅크|셀프주유")
+NOT_GAS = re.compile(r"수소|교통카드|전기차|충전기")  # 수소버스·교통카드 충전소 등은 주유소가 아님
 # 매년 4월 1일 가맹점 매출 등급을 다시 매기며, 그 전날 날짜 폴더에 새 목록을 올린다(2026년: 20260331).
 EXCL_URL = "https://cdn.nmcs.co.kr/zdata/merchant/{d}/daejeon_market_list.html"
 KST = timezone(timedelta(hours=9))
@@ -51,7 +52,7 @@ def fetch_excluded():
         out, seen = [], set()
         for x in rows:
             name, addr, cat = (x.get("name") or "").strip(), re.sub(r"\s+", " ", x.get("address") or "").strip(), x.get("category") or ""
-            if not (cat.startswith("주유소") or GAS_NAME.search(name)) or (name, addr) in seen:
+            if not (cat.startswith("주유소") or GAS_NAME.search(name)) or NOT_GAS.search(name) or (name, addr) in seen:
                 continue
             seen.add((name, addr))
             gu = (addr.split(" ") + ["", ""])[1]
@@ -85,7 +86,7 @@ def main():
     seen, out = set(), []
     for i in items:
         name, addr = (i.get("mrhst_nm") or "").strip(), (i.get("adres") or "").strip()
-        if not GAS_NAME.search(name) or (name, addr) in seen:
+        if not GAS_NAME.search(name) or NOT_GAS.search(name) or (name, addr) in seen:
             continue
         seen.add((name, addr))
         out.append({"name": name, "addr": addr, "gu": i.get("se"), "dong": i.get("adstrd_nm")})

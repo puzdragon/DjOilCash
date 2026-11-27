@@ -1,0 +1,17 @@
+name: probe-nmcs
+on: { push: { branches: [claude/project-thread-rctx5m] } }
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          B=https://cdn.nmcs.co.kr/zdata/merchant/20260331
+          curl -sS -m 60 -A "Mozilla/5.0" -o p.html -w "code %{http_code} size %{size_download}\n" $B/daejeon_market_list.html
+          echo "=== HTML ==="; head -c 20000 p.html
+          echo; echo "=== refs ==="
+          grep -oE "(src|href)=['\"][^'\"]+['\"]|['\"][^'\"]+\.(json|js|csv|txt)['\"]" p.html | sort -u
+          for f in $(grep -oE "['\"][^'\"]+\.(json|js|csv|txt)['\"]" p.html | tr -d "'\"" | sort -u); do
+            case $f in http*) u=$f;; /*) u=https://cdn.nmcs.co.kr$f;; *) u=$B/$f;; esac
+            echo "=== $u ==="; curl -sS -m 60 -A "Mozilla/5.0" "$u" -o out.bin -w "code %{http_code} size %{size_download}\n"; head -c 3000 out.bin; echo
+            echo "주유소 count:"; grep -o "주유소" out.bin | wc -l
+          done

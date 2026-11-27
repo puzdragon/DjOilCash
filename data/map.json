@@ -1,0 +1,2310 @@
+{
+ "updated": "2026-11-27 12:59",
+ "counts": {
+  "verified": 34,
+  "candidate": 70,
+  "ontong_candidates": 179,
+  "unmatched": 88,
+  "detail_pending": 31
+ },
+ "stations": [
+  {
+   "id": "A0013988",
+   "name": "OK주유소",
+   "opinet_name": "OK주유소",
+   "ontong_name": "㈜남강 OK주유소",
+   "addr": "대전 대덕구 대전로 1312 (읍내동)",
+   "gu": "대덕구",
+   "lat": 36.37088,
+   "lng": 127.420705,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": "042-633-8757",
+   "prices": {
+    "gasoline": 1799,
+    "diesel": 1792
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0014024",
+   "name": "㈜연정 농수산주유소",
+   "opinet_name": "㈜연정 농수산주유소",
+   "ontong_name": "주식회사 연정 (농수산주유소)",
+   "addr": "대전 대덕구 한밭대로 1014",
+   "gu": "대덕구",
+   "lat": 36.357858,
+   "lng": 127.411267,
+   "lpg": false,
+   "brand": "GSC",
+   "tel": "042-635-1587",
+   "prices": {
+    "gasoline": 1845,
+    "diesel": 1835
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0012592",
+   "name": "㈜학하 목상셀프주유소",
+   "opinet_name": "㈜학하 목상셀프주유소",
+   "ontong_name": "(주)학하 목상셀프주유소",
+   "addr": "대전 대덕구 대덕대로 1500 (목상동)",
+   "gu": "대덕구",
+   "lat": 36.449385,
+   "lng": 127.414767,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": "070-7722-5153",
+   "prices": {
+    "gasoline": 1835,
+    "diesel": 1825
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0017445",
+   "name": "갑천주유소",
+   "opinet_name": "갑천주유소",
+   "ontong_name": "갑천주유소",
+   "addr": "대전 대덕구 아리랑로55번길 189 (신대동)",
+   "gu": "대덕구",
+   "lat": 36.392989,
+   "lng": 127.413622,
+   "lpg": false,
+   "brand": "GSC",
+   "tel": "042-635-4062",
+   "prices": {
+    "gasoline": 1848,
+    "diesel": 1818
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0013700",
+   "name": "개나리주유소오일뱅크",
+   "opinet_name": "개나리주유소오일뱅크",
+   "ontong_name": "개나리주유소",
+   "addr": "대전 대덕구 오정로 53 (오정동)",
+   "gu": "대덕구",
+   "lat": 36.351605,
+   "lng": 127.411345,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": "042-631-4466",
+   "prices": {
+    "gasoline": 1949,
+    "diesel": 1939
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016453",
+   "name": "금강주유소",
+   "opinet_name": "금강주유소",
+   "ontong_name": "금강주유소",
+   "addr": "대전 대덕구 신탄진로 536",
+   "gu": "대덕구",
+   "lat": 36.426735,
+   "lng": 127.420843,
+   "lpg": false,
+   "brand": "GSC",
+   "tel": "042-931-6633",
+   "prices": {
+    "gasoline": 1825,
+    "diesel": 1813
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0014117",
+   "name": "당산주유소",
+   "opinet_name": "당산주유소",
+   "ontong_name": "당산주유소",
+   "addr": "대전 대덕구 아리랑로 135 (읍내동)",
+   "gu": "대덕구",
+   "lat": 36.373991,
+   "lng": 127.419483,
+   "lpg": false,
+   "brand": "SKE",
+   "tel": "042-622-2133",
+   "prices": {
+    "gasoline": 1815,
+    "diesel": 1795
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016820",
+   "name": "대덕주유소",
+   "opinet_name": "대덕주유소",
+   "ontong_name": "대덕충전소",
+   "addr": "대전 대덕구 신탄진로 470",
+   "gu": "대덕구",
+   "lat": 36.421402,
+   "lng": 127.419954,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": "042-936-9934",
+   "prices": {
+    "gasoline": 1825,
+    "diesel": 1813
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016751",
+   "name": "순우리주유소",
+   "opinet_name": "순우리주유소",
+   "ontong_name": "순우리주유소",
+   "addr": "대전 대덕구 신탄진로 533 (상서동)",
+   "gu": "대덕구",
+   "lat": 36.426742,
+   "lng": 127.419768,
+   "lpg": false,
+   "brand": "ETC",
+   "tel": "042-931-5182",
+   "prices": {
+    "gasoline": 1869,
+    "diesel": 1869
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016465",
+   "name": "스마일주유소",
+   "opinet_name": "스마일주유소",
+   "ontong_name": "구도일주유소스마일",
+   "addr": "대전 대덕구 신탄진로 622 (상서동)",
+   "gu": "대덕구",
+   "lat": 36.433786,
+   "lng": 127.424669,
+   "lpg": false,
+   "brand": "SOL",
+   "tel": "042-934-5188",
+   "prices": {
+    "gasoline": 1825,
+    "diesel": 1813
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016685",
+   "name": "용은주유소",
+   "opinet_name": "용은주유소",
+   "ontong_name": "용은주유소",
+   "addr": "대전 대덕구 신탄진로 559 (상서동)",
+   "gu": "대덕구",
+   "lat": 36.428932,
+   "lng": 127.420883,
+   "lpg": false,
+   "brand": "SOL",
+   "tel": "042-936-0068",
+   "prices": {
+    "gasoline": 1825,
+    "diesel": 1813
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016662",
+   "name": "으뜸회덕주유소",
+   "opinet_name": "으뜸회덕주유소",
+   "ontong_name": "으뜸회덕주유소",
+   "addr": "대전 대덕구 신탄진로 222",
+   "gu": "대덕구",
+   "lat": 36.400339,
+   "lng": 127.423369,
+   "lpg": false,
+   "brand": "SKE",
+   "tel": "042-628-1496",
+   "prices": {
+    "gasoline": 1805,
+    "diesel": 1793
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0014095",
+   "name": "제일셀프주유소",
+   "opinet_name": "제일셀프주유소",
+   "ontong_name": "제일주유소",
+   "addr": "대전 대덕구  동서대로 1750 (비래동)",
+   "gu": "대덕구",
+   "lat": 36.351855,
+   "lng": 127.442953,
+   "lpg": false,
+   "brand": "SOL",
+   "tel": "042-638-4255",
+   "prices": {
+    "gasoline": 1825,
+    "diesel": 1810
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0014127",
+   "name": "중도석유(주)오정동주유소",
+   "opinet_name": "중도석유(주)오정동주유소",
+   "ontong_name": "중도석유(주)오정동주유소",
+   "addr": "대전 대덕구 대전로 1144 (오정동)",
+   "gu": "대덕구",
+   "lat": 36.356243,
+   "lng": 127.415317,
+   "lpg": false,
+   "brand": "GSC",
+   "tel": "042-672-4843",
+   "prices": {
+    "gasoline": 1800,
+    "diesel": 1795
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016817",
+   "name": "현대오일뱅크㈜직영 4공단주유소",
+   "opinet_name": "현대오일뱅크㈜직영 4공단주유소",
+   "ontong_name": "현대오일뱅크(주)직영 4공단주유소",
+   "addr": "대전 대덕구 대덕대로 1412",
+   "gu": "대덕구",
+   "lat": 36.4459,
+   "lng": 127.406789,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": "042-935-6051",
+   "prices": {
+    "gasoline": 1866,
+    "diesel": 1850
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0013750",
+   "name": "(주)하늘셀프주유소",
+   "opinet_name": "(주)하늘셀프주유소",
+   "ontong_name": "주식회사 하늘셀프주유소",
+   "addr": "대전 동구 대전로 549",
+   "gu": "동구",
+   "lat": 36.311703,
+   "lng": 127.444689,
+   "lpg": false,
+   "brand": "SKE",
+   "tel": "042-283-5151",
+   "prices": {
+    "gasoline": 1802,
+    "diesel": 1790
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0014026",
+   "name": "(주)학하 삼성셀프주유소",
+   "opinet_name": "(주)학하 삼성셀프주유소",
+   "ontong_name": "(주)학하 삼성셀프주유소",
+   "addr": "대전 동구 대전로 908 (삼성동)",
+   "gu": "동구",
+   "lat": 36.339773,
+   "lng": 127.427732,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": "042-637-5566",
+   "prices": {
+    "gasoline": 1855,
+    "diesel": 1855
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0014108",
+   "name": "가양셀프주유소",
+   "opinet_name": "가양셀프주유소",
+   "ontong_name": "가양주유소",
+   "addr": "대전 동구 우암로 365 (가양동)",
+   "gu": "동구",
+   "lat": 36.351383,
+   "lng": 127.452424,
+   "lpg": false,
+   "brand": "SOL",
+   "tel": "042-632-3838",
+   "prices": {
+    "gasoline": 1825,
+    "diesel": 1815
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0014106",
+   "name": "고향주유소",
+   "opinet_name": "고향주유소",
+   "ontong_name": "고향주유소",
+   "addr": "대전 동구 산내로 562",
+   "gu": "동구",
+   "lat": 36.228786,
+   "lng": 127.453731,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": "042-273-1998",
+   "prices": {
+    "gasoline": 1829,
+    "diesel": 1839
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0014086",
+   "name": "동아주유소",
+   "opinet_name": "동아주유소",
+   "ontong_name": "동아주유소",
+   "addr": "대전 동구 동대전로 118 (대동)",
+   "gu": "동구",
+   "lat": 36.332607,
+   "lng": 127.445203,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": "042-626-3333",
+   "prices": {
+    "gasoline": 1819,
+    "diesel": 1809
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0013597",
+   "name": "동일석유㈜대전주유소",
+   "opinet_name": "동일석유㈜대전주유소",
+   "ontong_name": "대전셀프(self)주유소",
+   "addr": "대전 동구 계족로 436 (용전동)",
+   "gu": "동구",
+   "lat": 36.350553,
+   "lng": 127.432593,
+   "lpg": false,
+   "brand": "SKE",
+   "tel": "042-673-8880",
+   "prices": {
+    "gasoline": 1799,
+    "diesel": 1789
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0013799",
+   "name": "산내제일주유소",
+   "opinet_name": "산내제일주유소",
+   "ontong_name": "산내제일주유소",
+   "addr": "대전 동구 대전로 269 (대성동)",
+   "gu": "동구",
+   "lat": 36.292333,
+   "lng": 127.462171,
+   "lpg": false,
+   "brand": "SOL",
+   "tel": "042-282-5189",
+   "prices": {
+    "gasoline": 1802,
+    "diesel": 1790
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0014078",
+   "name": "신가오주유소",
+   "opinet_name": "신가오주유소",
+   "ontong_name": "신가오주유소",
+   "addr": "대전 동구 은어송로 38 (가오동)",
+   "gu": "동구",
+   "lat": 36.305055,
+   "lng": 127.454383,
+   "lpg": false,
+   "brand": "SKE",
+   "tel": "042-272-7171",
+   "prices": {
+    "gasoline": 1829,
+    "diesel": 1828
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0014082",
+   "name": "우정주유소",
+   "opinet_name": "우정주유소",
+   "ontong_name": "우정주유소",
+   "addr": "대전 동구 옥천로 418 (삼정동)",
+   "gu": "동구",
+   "lat": 36.331161,
+   "lng": 127.476,
+   "lpg": false,
+   "brand": "SOL",
+   "tel": "042-284-0235",
+   "prices": {
+    "gasoline": 1895,
+    "diesel": 1895
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0013983",
+   "name": "재하주유소",
+   "opinet_name": "재하주유소",
+   "ontong_name": "재하주유소",
+   "addr": "대전 동구 동서대로 1664 (성남동)",
+   "gu": "동구",
+   "lat": 36.348105,
+   "lng": 127.434648,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": "042-626-6626",
+   "prices": {
+    "gasoline": 1825,
+    "diesel": 1805
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016802",
+   "name": "(유)용명에너지 신대전셀프주유소",
+   "opinet_name": "(유)용명에너지 신대전셀프주유소",
+   "ontong_name": "현대오일뱅크(주)직영신대전주",
+   "addr": "대전 서구 도산로 213",
+   "gu": "서구",
+   "lat": 36.327401,
+   "lng": 127.380067,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": "042-533-6045",
+   "prices": {
+    "gasoline": 1797,
+    "diesel": 1787
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016696",
+   "name": "(주)가수원주유소",
+   "opinet_name": "㈜가수원주유소",
+   "ontong_name": "가원 주유소",
+   "addr": "대전 서구 계백로 1176 (가수원동)",
+   "gu": "서구",
+   "lat": 36.305021,
+   "lng": 127.354221,
+   "lpg": false,
+   "brand": "SKE",
+   "tel": "042-543-5189",
+   "prices": {
+    "gasoline": 1828,
+    "diesel": 1808
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0016822",
+   "name": "(주)동건에너지",
+   "opinet_name": "(주)동건에너지 만년교셀프주유소",
+   "ontong_name": null,
+   "addr": "대전 서구 계룡로 202",
+   "gu": "서구",
+   "lat": 36.350577,
+   "lng": 127.3526,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": null,
+   "prices": {
+    "gasoline": 1894,
+    "diesel": 1884
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0016672",
+   "name": "(주)에너비즈 둔산주유소",
+   "opinet_name": "(주)에너비즈 둔산주유소",
+   "ontong_name": "(주)에너비즈 둔산주유소",
+   "addr": "대전 서구 유등로 667 (탄방동)",
+   "gu": "서구",
+   "lat": 36.346517,
+   "lng": 127.401451,
+   "lpg": false,
+   "brand": "SOL",
+   "tel": "042-487-7090",
+   "prices": {
+    "gasoline": 1823,
+    "diesel": 1810
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0014200",
+   "name": "(주)에너비즈 명품주유소",
+   "opinet_name": "(주)에너비즈 명품주유소",
+   "ontong_name": "(주)에너비즈 명품주유소",
+   "addr": "대전 서구 배재로 218 (도마동)",
+   "gu": "서구",
+   "lat": 36.327927,
+   "lng": 127.370725,
+   "lpg": false,
+   "brand": "SOL",
+   "tel": "042-521-0051",
+   "prices": {
+    "gasoline": 1819,
+    "diesel": 1809
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016435",
+   "name": "(주)혜천셀프주유소",
+   "opinet_name": "(주)혜천셀프주유소",
+   "ontong_name": "(주)혜천셀프주유소",
+   "addr": "대전 서구 혜천로 28",
+   "gu": "서구",
+   "lat": 36.306683,
+   "lng": 127.369997,
+   "lpg": false,
+   "brand": "GSC",
+   "tel": "042-587-5189",
+   "prices": {
+    "gasoline": 1807,
+    "diesel": 1799
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016859",
+   "name": "㈜남강 굿모닝주유소",
+   "opinet_name": "㈜남강 굿모닝주유소",
+   "ontong_name": "굿모닝주유소",
+   "addr": "대전 서구 계백로 1376",
+   "gu": "서구",
+   "lat": 36.310603,
+   "lng": 127.375029,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": "042-583-5182",
+   "prices": {
+    "gasoline": 1797,
+    "diesel": 1786
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0014522",
+   "name": "괴정주유소",
+   "opinet_name": "괴정주유소",
+   "ontong_name": "괴정주유소",
+   "addr": "대전 서구 괴정로 113",
+   "gu": "서구",
+   "lat": 36.337745,
+   "lng": 127.385458,
+   "lpg": false,
+   "brand": "GSC",
+   "tel": null,
+   "prices": {
+    "gasoline": 1869,
+    "diesel": 1869
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0033465",
+   "name": "구봉산셀프주유소",
+   "opinet_name": "지에스칼텍스㈜구봉산셀프주유소",
+   "ontong_name": "구봉산셀프주유소",
+   "addr": "대전 서구 구봉로 208",
+   "gu": "서구",
+   "lat": 36.297853,
+   "lng": 127.345474,
+   "lpg": false,
+   "brand": "GSC",
+   "tel": "042-256-8333",
+   "prices": {
+    "gasoline": 1824,
+    "diesel": 1833
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0016761",
+   "name": "대림주유소",
+   "opinet_name": "대림주유소",
+   "ontong_name": "(주)대림주유소",
+   "addr": "대전 서구 계백로 1290 (정림동)",
+   "gu": "서구",
+   "lat": 36.307923,
+   "lng": 127.366184,
+   "lpg": false,
+   "brand": "GSC",
+   "tel": "042-586-5102",
+   "prices": {
+    "gasoline": 1807,
+    "diesel": 1795
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016558",
+   "name": "대양석유(주)내동주유소",
+   "opinet_name": "대양석유㈜ 내동주유소",
+   "ontong_name": null,
+   "addr": "대전 서구 동서대로 1081",
+   "gu": "서구",
+   "lat": 36.329052,
+   "lng": 127.381014,
+   "lpg": false,
+   "brand": "SKE",
+   "tel": null,
+   "prices": {
+    "gasoline": 1797,
+    "diesel": 1787
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0016604",
+   "name": "도마진실주유소",
+   "opinet_name": "도마진실주유소",
+   "ontong_name": "도마진실주유소",
+   "addr": "대전 서구 도산로 123",
+   "gu": "서구",
+   "lat": 36.319627,
+   "lng": 127.377388,
+   "lpg": false,
+   "brand": "SOL",
+   "tel": "042-522-3764",
+   "prices": {
+    "gasoline": 1797,
+    "diesel": 1787
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016584",
+   "name": "배재로주유소(주)",
+   "opinet_name": "디에스주유소",
+   "ontong_name": null,
+   "addr": "대전 서구 배재로 210",
+   "gu": "서구",
+   "lat": 36.327145,
+   "lng": 127.370746,
+   "lpg": false,
+   "brand": "SKE",
+   "tel": null,
+   "prices": {
+    "gasoline": 1839,
+    "diesel": 1819
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0016442",
+   "name": "배재주유소",
+   "opinet_name": "배재주유소",
+   "ontong_name": null,
+   "addr": "대전 서구 도솔5길 5",
+   "gu": "서구",
+   "lat": 36.315886,
+   "lng": 127.37321,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": null,
+   "prices": {
+    "gasoline": 1837,
+    "diesel": 1817
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0016582",
+   "name": "백산주유소",
+   "opinet_name": "백산주유소",
+   "ontong_name": "백산 주유소",
+   "addr": "대전 서구 동서대로 1068",
+   "gu": "서구",
+   "lat": 36.329413,
+   "lng": 127.379376,
+   "lpg": false,
+   "brand": "SKE",
+   "tel": null,
+   "prices": {
+    "gasoline": 2199,
+    "diesel": 2199
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0016763",
+   "name": "삼정주유소",
+   "opinet_name": "삼정주유소",
+   "ontong_name": null,
+   "addr": "대전 서구 대덕대로 384",
+   "gu": "서구",
+   "lat": 36.367047,
+   "lng": 127.379875,
+   "lpg": false,
+   "brand": "SOL",
+   "tel": null,
+   "prices": {
+    "gasoline": 1899,
+    "diesel": 1899
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0016748",
+   "name": "싱글벙글LPG충전소",
+   "opinet_name": "싱글벙글LPG충전소",
+   "ontong_name": null,
+   "addr": "대전 서구 계백로1249번길 27",
+   "gu": "서구",
+   "lat": 36.307232,
+   "lng": 127.359858,
+   "lpg": true,
+   "brand": "SOL",
+   "tel": null,
+   "prices": {
+    "lpg": 1134
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0013629",
+   "name": "씨앤에스유통㈜ 호수공원주유소",
+   "opinet_name": "씨앤에스유통㈜ 호수공원주유소",
+   "ontong_name": "씨앤에스유통 ㈜호수공원주유소",
+   "addr": "대전 서구 계백로 1259 (정림동)",
+   "gu": "서구",
+   "lat": 36.30761,
+   "lng": 127.362627,
+   "lpg": false,
+   "brand": "SOL",
+   "tel": "042-534-5189",
+   "prices": {
+    "gasoline": 1844,
+    "diesel": 1834
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016857",
+   "name": "씨앤에스유통㈜도안신도시주유소",
+   "opinet_name": "씨앤에스유통㈜도안신도시주유소",
+   "ontong_name": "씨앤에스유통(주)구도일주유소 도안신도시",
+   "addr": "대전 서구 도안동로 277",
+   "gu": "서구",
+   "lat": 36.330798,
+   "lng": 127.347727,
+   "lpg": false,
+   "brand": "SOL",
+   "tel": "042-545-2227",
+   "prices": {
+    "gasoline": 1858,
+    "diesel": 1838
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0033489",
+   "name": "우리하나셀프주유소",
+   "opinet_name": "우리하나셀프주유소",
+   "ontong_name": "우리하나에너지(주)우리셀프주유소",
+   "addr": "대전 서구 동서대로 1120",
+   "gu": "서구",
+   "lat": 36.328108,
+   "lng": 127.384936,
+   "lpg": false,
+   "brand": "SOL",
+   "tel": "042-522-5179",
+   "prices": {
+    "gasoline": 1799,
+    "diesel": 1789
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016740",
+   "name": "정림가스충전소",
+   "opinet_name": "정림가스충전소",
+   "ontong_name": "정림가스충전소",
+   "addr": "대전 서구 계백로 1275",
+   "gu": "서구",
+   "lat": 36.308031,
+   "lng": 127.364396,
+   "lpg": true,
+   "brand": "GSC",
+   "tel": null,
+   "prices": {
+    "lpg": 1079
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0016791",
+   "name": "중도석유(주) 대덕주유소",
+   "opinet_name": "중도석유(주) 대덕주유소",
+   "ontong_name": "중도석유(주)대덕주유소",
+   "addr": "대전 서구 월평북로 84 (월평동)",
+   "gu": "서구",
+   "lat": 36.362076,
+   "lng": 127.377653,
+   "lpg": false,
+   "brand": "GSC",
+   "tel": "042-482-3835",
+   "prices": {
+    "gasoline": 1820,
+    "diesel": 1810
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016792",
+   "name": "중도석유(주)월드컵주유소",
+   "opinet_name": "중도석유(주)월드컵주유소",
+   "ontong_name": "중도석유(주)월드컵주유소",
+   "addr": "대전 서구 문정로 12 (탄방동)",
+   "gu": "서구",
+   "lat": 36.345355,
+   "lng": 127.381347,
+   "lpg": false,
+   "brand": "GSC",
+   "tel": "042-483-5760",
+   "prices": {
+    "gasoline": 1820,
+    "diesel": 1810
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016545",
+   "name": "중동주유소",
+   "opinet_name": "중동주유소",
+   "ontong_name": "중동주유소",
+   "addr": "대전 서구 계룡로 344",
+   "gu": "서구",
+   "lat": 36.353707,
+   "lng": 127.3671,
+   "lpg": false,
+   "brand": "RTO",
+   "tel": null,
+   "prices": {
+    "gasoline": 1835,
+    "diesel": 1824
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0016856",
+   "name": "탄방주유소",
+   "opinet_name": "탄방주유소",
+   "ontong_name": null,
+   "addr": "대전 서구 유등로 659",
+   "gu": "서구",
+   "lat": 36.345786,
+   "lng": 127.401289,
+   "lpg": false,
+   "brand": "RTO",
+   "tel": null,
+   "prices": {
+    "gasoline": 1845,
+    "diesel": 1810
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0013807",
+   "name": "현대셀프주유소",
+   "opinet_name": "현대셀프주유소",
+   "ontong_name": null,
+   "addr": "대전 서구 변동로 114",
+   "gu": "서구",
+   "lat": 36.323307,
+   "lng": 127.385203,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": null,
+   "prices": {
+    "gasoline": 1829,
+    "diesel": 1799
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0016780",
+   "name": "(주)구암상사주유소",
+   "opinet_name": "(주)구암상사주유소",
+   "ontong_name": null,
+   "addr": "대전 유성구 유성대로654번길 32",
+   "gu": "유성구",
+   "lat": 36.351686,
+   "lng": 127.330705,
+   "lpg": false,
+   "brand": "GSC",
+   "tel": null,
+   "prices": {
+    "gasoline": 1899,
+    "diesel": 1873
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0016773",
+   "name": "(주)방동주유소",
+   "opinet_name": "주식회사 방동주유소",
+   "ontong_name": "주식회사방동주유소",
+   "addr": "대전 유성구 계백로 139",
+   "gu": "유성구",
+   "lat": 36.274446,
+   "lng": 127.267414,
+   "lpg": false,
+   "brand": "GSC",
+   "tel": null,
+   "prices": {
+    "gasoline": 1844,
+    "diesel": 1819
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0033833",
+   "name": "(주)이화에너지(남세종IC충전소)",
+   "opinet_name": "남세종IC충전소 ㈜이화에너지",
+   "ontong_name": null,
+   "addr": "대전 유성구 북유성대로 444",
+   "gu": "유성구",
+   "lat": 36.403075,
+   "lng": 127.307321,
+   "lpg": true,
+   "brand": "SKE",
+   "tel": null,
+   "prices": {
+    "lpg": 1197
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0016874",
+   "name": "(주)하나주유소",
+   "opinet_name": "(주)하나주유소",
+   "ontong_name": "(주)하나주유소",
+   "addr": "대전 유성구 유성대로 1127 (하기동)",
+   "gu": "유성구",
+   "lat": 36.391456,
+   "lng": 127.346765,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": "042-867-5151",
+   "prices": {
+    "gasoline": 1844,
+    "diesel": 1839
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016703",
+   "name": "(주)학하 학하셀프주유소",
+   "opinet_name": "(주)학하 학하셀프주유소",
+   "ontong_name": "(주)학하 학하셀프주유소",
+   "addr": "대전 유성구 학하로 189 (복용동)",
+   "gu": "유성구",
+   "lat": 36.344607,
+   "lng": 127.314068,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": "070-4187-4546",
+   "prices": {
+    "gasoline": 1875,
+    "diesel": 1875
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016777",
+   "name": "(주)활제충전소",
+   "opinet_name": "SK행복충전 황제충전소",
+   "ontong_name": null,
+   "addr": "대전 유성구 대덕대로 1021",
+   "gu": "유성구",
+   "lat": 36.419484,
+   "lng": 127.379188,
+   "lpg": true,
+   "brand": "SKG",
+   "tel": null,
+   "prices": {
+    "lpg": 1179
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0017444",
+   "name": "(주)황제주유소",
+   "opinet_name": "(주)황제주유소",
+   "ontong_name": "(주)황제충전소",
+   "addr": "대전 유성구 대덕대로 934 (화암동)",
+   "gu": "유성구",
+   "lat": 36.412125,
+   "lng": 127.378486,
+   "lpg": false,
+   "brand": "SKE",
+   "tel": "042-861-5558",
+   "prices": {
+    "gasoline": 1829,
+    "diesel": 1814
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016826",
+   "name": "HD현대오일뱅크㈜직영 노은주유소",
+   "opinet_name": "HD현대오일뱅크㈜직영 노은주유소",
+   "ontong_name": "현대오일뱅크(주)직영 노은주유소",
+   "addr": "대전 유성구 노은동로 79",
+   "gu": "유성구",
+   "lat": 36.367491,
+   "lng": 127.323214,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": "042-477-5182",
+   "prices": {
+    "gasoline": 1869,
+    "diesel": 1854
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016840",
+   "name": "HD현대오일뱅크㈜직영 세종관문셀프주유소",
+   "opinet_name": "HD현대오일뱅크㈜직영 세종관문셀프주유소",
+   "ontong_name": "현대오일뱅크(주)직영세종관문셀프",
+   "addr": "대전 유성구 북유성대로 288 (하기동)",
+   "gu": "유성구",
+   "lat": 36.390564,
+   "lng": 127.316241,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": "042-826-5191",
+   "prices": {
+    "gasoline": 1848,
+    "diesel": 1848
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016806",
+   "name": "HD현대오일뱅크㈜직영 송강주유소",
+   "opinet_name": "HD현대오일뱅크㈜직영 송강주유소",
+   "ontong_name": "현대정유(주)송강주유소",
+   "addr": "대전 유성구 대덕대로 1131 (송강동)",
+   "gu": "유성구",
+   "lat": 36.428152,
+   "lng": 127.385485,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": "042-935-4064",
+   "prices": {
+    "gasoline": 1862,
+    "diesel": 1843
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016819",
+   "name": "HD현대오일뱅크㈜직영 스마트셀프주유소",
+   "opinet_name": "HD현대오일뱅크㈜직영 스마트셀프주유소",
+   "ontong_name": "현대오일뱅크(주)직영 스마트셀프",
+   "addr": "대전 유성구 엑스포로 222 (원촌동)",
+   "gu": "유성구",
+   "lat": 36.376621,
+   "lng": 127.403617,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": "042-862-5189",
+   "prices": {
+    "gasoline": 1848,
+    "diesel": 1848
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0017449",
+   "name": "SK자운셀프주유소",
+   "opinet_name": "SK자운셀프주유소",
+   "ontong_name": "SK자운셀프주유소",
+   "addr": "대전 유성구 자운로157번길 122",
+   "gu": "유성구",
+   "lat": 36.406832,
+   "lng": 127.338908,
+   "lpg": false,
+   "brand": "SKE",
+   "tel": "042-867-5189",
+   "prices": {
+    "gasoline": 1813,
+    "diesel": 1807
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016828",
+   "name": "㈜상익 유성주유소",
+   "opinet_name": "㈜상익 유성주유소",
+   "ontong_name": "주식회사 상익유성주유소",
+   "addr": "대전 유성구 현충원로 342",
+   "gu": "유성구",
+   "lat": 36.359298,
+   "lng": 127.308493,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": "042-825-2452",
+   "prices": {
+    "gasoline": 1809,
+    "diesel": 1809
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016876",
+   "name": "㈜제트에너지서대전주유소",
+   "opinet_name": "㈜제트에너지서대전주유소",
+   "ontong_name": "(주)제트에너지서대전주유소",
+   "addr": "대전 유성구 계백로 212(방동)",
+   "gu": "유성구",
+   "lat": 36.270224,
+   "lng": 127.273441,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": "042-825-5123",
+   "prices": {
+    "gasoline": 1815,
+    "diesel": 1809
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0017433",
+   "name": "㈜행복가득셀프",
+   "opinet_name": "㈜행복가득셀프",
+   "ontong_name": "지에스칼텍스 (주)화암주유소",
+   "addr": "대전 유성구 대덕대로 887  (화암동)",
+   "gu": "유성구",
+   "lat": 36.408943,
+   "lng": 127.375329,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": null,
+   "prices": {
+    "gasoline": 1809,
+    "diesel": 1809
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0012155",
+   "name": "계룡주유소",
+   "opinet_name": "계룡주유소",
+   "ontong_name": "계룡주유소",
+   "addr": "대전 유성구 현충원로 177",
+   "gu": "유성구",
+   "lat": 36.360381,
+   "lng": 127.290828,
+   "lpg": false,
+   "brand": "SOL",
+   "tel": null,
+   "prices": {
+    "gasoline": 2079,
+    "diesel": 2079
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0016659",
+   "name": "관저주유소",
+   "opinet_name": "관저주유소",
+   "ontong_name": "관저주유소",
+   "addr": "대전 유성구 계백로 975  (원내동)",
+   "gu": "유성구",
+   "lat": 36.301828,
+   "lng": 127.33217,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": "042-541-4202",
+   "prices": {
+    "gasoline": 1895,
+    "diesel": 1875
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016851",
+   "name": "구도일태전주유소",
+   "opinet_name": "구도일태전주유소",
+   "ontong_name": "구도일태전주유소오앤씨에너지(유)",
+   "addr": "대전 유성구 엑스포로 259 (원촌동)",
+   "gu": "유성구",
+   "lat": 36.379923,
+   "lng": 127.406166,
+   "lpg": false,
+   "brand": "SOL",
+   "tel": "042-863-5104",
+   "prices": {
+    "gasoline": 1847,
+    "diesel": 1827
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016845",
+   "name": "동일석유(주)테크노밸리",
+   "opinet_name": "동일석유㈜테크노밸리주유소",
+   "ontong_name": null,
+   "addr": "대전 유성구 테크노중앙로 139",
+   "gu": "유성구",
+   "lat": 36.424127,
+   "lng": 127.400433,
+   "lpg": false,
+   "brand": "SKE",
+   "tel": null,
+   "prices": {
+    "gasoline": 1862,
+    "diesel": 1812
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0016585",
+   "name": "동학사LPG충전소",
+   "opinet_name": "동학사LPG충전소",
+   "ontong_name": null,
+   "addr": "대전 유성구 현충원로 137",
+   "gu": "유성구",
+   "lat": 36.361261,
+   "lng": 127.286233,
+   "lpg": true,
+   "brand": "GSC",
+   "tel": null,
+   "prices": {
+    "lpg": 1198
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0016844",
+   "name": "방동LPG충전소",
+   "opinet_name": "방동LPG충전소",
+   "ontong_name": null,
+   "addr": "대전 유성구 계백로 473",
+   "gu": "유성구",
+   "lat": 36.276665,
+   "lng": 127.292957,
+   "lpg": true,
+   "brand": "GSC",
+   "tel": null,
+   "prices": {
+    "lpg": 1151
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0016714",
+   "name": "방동제일주유소",
+   "opinet_name": "방동제일주유소",
+   "ontong_name": "방동제일주유소",
+   "addr": "대전 유성구 계백로 324",
+   "gu": "유성구",
+   "lat": 36.266477,
+   "lng": 127.284835,
+   "lpg": false,
+   "brand": "SOL",
+   "tel": "042-825-0020",
+   "prices": {
+    "gasoline": 1835,
+    "diesel": 1819
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0016513",
+   "name": "북대전주유소",
+   "opinet_name": "북대전주유소",
+   "ontong_name": "북대전주유소",
+   "addr": "대전 유성구 유성대로 1495",
+   "gu": "유성구",
+   "lat": 36.409542,
+   "lng": 127.38018,
+   "lpg": false,
+   "brand": "SOL",
+   "tel": null,
+   "prices": {
+    "gasoline": 1859,
+    "diesel": 1859
+   },
+   "status": "verified"
+  },
+  {
+   "id": "v11",
+   "name": "빙그레에너지",
+   "addr": "대전 유성구 월드컵대로289번길 42",
+   "gu": "유성구",
+   "lat": 36.350483,
+   "lng": 127.333254,
+   "lpg": false,
+   "prices": {},
+   "status": "verified"
+  },
+  {
+   "id": "A0016858",
+   "name": "삼미상사㈜ 진잠셀프주유소",
+   "opinet_name": "삼미상사㈜ 진잠셀프주유소",
+   "ontong_name": "현대오일뱅크(주)직영진잠셀프주유",
+   "addr": "대전 유성구 계백로 899 (원내동)",
+   "gu": "유성구",
+   "lat": 36.299471,
+   "lng": 127.323909,
+   "lpg": false,
+   "brand": "SKE",
+   "tel": "042-545-9408",
+   "prices": {
+    "gasoline": 1828,
+    "diesel": 1819
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016651",
+   "name": "송정가스",
+   "opinet_name": "송정가스충전소",
+   "ontong_name": null,
+   "addr": "대전 유성구 계백로 34",
+   "gu": "유성구",
+   "lat": 36.27841,
+   "lng": 127.256755,
+   "lpg": true,
+   "brand": "SKE",
+   "tel": null,
+   "prices": {
+    "lpg": 1144
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0017435",
+   "name": "우진주유소",
+   "opinet_name": "우진주유소",
+   "ontong_name": null,
+   "addr": "대전 유성구 유성대로654번길 1",
+   "gu": "유성구",
+   "lat": 36.352469,
+   "lng": 127.329579,
+   "lpg": false,
+   "brand": "SOL",
+   "tel": null,
+   "prices": {
+    "gasoline": 1895,
+    "diesel": 1874
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0016469",
+   "name": "위성주유소",
+   "opinet_name": "위성주유소",
+   "ontong_name": "위성주유소",
+   "addr": "대전 유성구 현충원로 489",
+   "gu": "유성구",
+   "lat": 36.35977,
+   "lng": 127.325186,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": "042-825-5145",
+   "prices": {
+    "gasoline": 1814,
+    "diesel": 1814
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0000728",
+   "name": "유성IC메가허브점",
+   "opinet_name": "유성IC메가허브점",
+   "ontong_name": "주식회사유성아이씨주유소",
+   "addr": "대전 유성구 현충원로 545",
+   "gu": "유성구",
+   "lat": 36.358421,
+   "lng": 127.331071,
+   "lpg": false,
+   "brand": "SOL",
+   "tel": "042-825-3351",
+   "prices": {
+    "gasoline": 1818,
+    "diesel": 1819
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016514",
+   "name": "유성학하충전소",
+   "opinet_name": "유성학하충전소",
+   "ontong_name": "유성학하충전소",
+   "addr": "대전 유성구 진잠옛로135번길 76",
+   "gu": "유성구",
+   "lat": 36.332699,
+   "lng": 127.30768,
+   "lpg": true,
+   "brand": "SOL",
+   "tel": null,
+   "prices": {
+    "lpg": 1156
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0017439",
+   "name": "장대주유소",
+   "opinet_name": "장대주유소",
+   "ontong_name": "주식회사 선일장대주유소",
+   "addr": "대전 유성구 유성대로 768 (장대동)",
+   "gu": "유성구",
+   "lat": 36.36061,
+   "lng": 127.336069,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": "042-825-6696",
+   "prices": {
+    "gasoline": 1809,
+    "diesel": 1809
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016721",
+   "name": "제이에너지(주)대덕밸리주유소",
+   "opinet_name": "제이에너지㈜대덕밸리주유소",
+   "ontong_name": null,
+   "addr": "대전 유성구 대덕대로 938",
+   "gu": "유성구",
+   "lat": 36.412435,
+   "lng": 127.378535,
+   "lpg": false,
+   "brand": "GSC",
+   "tel": null,
+   "prices": {
+    "gasoline": 1829,
+    "diesel": 1814
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0013631",
+   "name": "지에스칼텍스(주)21세기주유소",
+   "opinet_name": "지에스칼텍스(주)21세기주유소",
+   "ontong_name": "지에스칼텍스 (주)21세기주유소",
+   "addr": "대전 유성구 유성대로 845",
+   "gu": "유성구",
+   "lat": 36.367418,
+   "lng": 127.338905,
+   "lpg": false,
+   "brand": "GSC",
+   "tel": "042-825-2800",
+   "prices": {
+    "gasoline": 1845,
+    "diesel": 1849
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016741",
+   "name": "지에스칼텍스(주)정다운주유소",
+   "opinet_name": "지에스칼텍스(주)정다운주유소",
+   "ontong_name": "지에스칼텍스 (주)정다운주유소",
+   "addr": "대전 유성구 북유성대로 51(노은동)",
+   "gu": "유성구",
+   "lat": 36.371379,
+   "lng": 127.326539,
+   "lpg": false,
+   "brand": "GSC",
+   "tel": "042-824-5151",
+   "prices": {
+    "gasoline": 1845,
+    "diesel": 1849
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0017431",
+   "name": "지에스칼텍스㈜ 덕명주유소",
+   "opinet_name": "지에스칼텍스㈜ 덕명주유소",
+   "ontong_name": "GS사이언스주유소",
+   "addr": "대전 유성구 현충원로 283 (덕명동)",
+   "gu": "유성구",
+   "lat": 36.360699,
+   "lng": 127.302551,
+   "lpg": false,
+   "brand": "GSC",
+   "tel": "042-825-4031",
+   "prices": {
+    "gasoline": 1845,
+    "diesel": 1849
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016616",
+   "name": "진잠유통단지LPG충전소",
+   "opinet_name": "진잠 유통단지 충전소",
+   "ontong_name": null,
+   "addr": "대전 유성구 교촌동 331-1",
+   "gu": "유성구",
+   "lat": 36.311264,
+   "lng": 127.317845,
+   "lpg": true,
+   "brand": "HDO",
+   "tel": null,
+   "prices": {
+    "lpg": 1116
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0016821",
+   "name": "케이케이(주) 대전중앙주유소",
+   "opinet_name": "KK㈜ 대전중앙주유소",
+   "ontong_name": null,
+   "addr": "대전 유성구 유성대로 1647",
+   "gu": "유성구",
+   "lat": 36.400432,
+   "lng": 127.392513,
+   "lpg": false,
+   "brand": "SKE",
+   "tel": null,
+   "prices": {
+    "gasoline": 1815,
+    "diesel": 1805
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0016657",
+   "name": "필승주유소",
+   "opinet_name": "필승주유소",
+   "ontong_name": null,
+   "addr": "대전 유성구 현충원로 201",
+   "gu": "유성구",
+   "lat": 36.36038,
+   "lng": 127.293433,
+   "lpg": false,
+   "brand": "SKE",
+   "tel": null,
+   "prices": {
+    "gasoline": 1803,
+    "diesel": 1793
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0016682",
+   "name": "한밭대로주유소",
+   "opinet_name": "한밭대로주유소",
+   "ontong_name": "한밭대로주유소",
+   "addr": "대전 유성구 한밭대로 305 (장대동)",
+   "gu": "유성구",
+   "lat": 36.365825,
+   "lng": 127.334768,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": "042-823-5152",
+   "prices": {
+    "gasoline": 1844,
+    "diesel": 1834
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0033166",
+   "name": "한밭대앞Self주유소",
+   "opinet_name": "한밭대앞Self주유소",
+   "ontong_name": "한밭대앞Self주유소",
+   "addr": "대전 유성구 학하서로 111 (덕명동)",
+   "gu": "유성구",
+   "lat": 36.34743,
+   "lng": 127.299461,
+   "lpg": false,
+   "brand": "SOL",
+   "tel": "042-525-5151",
+   "prices": {
+    "gasoline": 1883,
+    "diesel": 1874
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0015453",
+   "name": "햇빛주유소",
+   "opinet_name": "햇빛주유소",
+   "ontong_name": null,
+   "addr": "대전 유성구 계백로 87 (송정동)",
+   "gu": "유성구",
+   "lat": 36.276362,
+   "lng": 127.262273,
+   "lpg": false,
+   "brand": "SKE",
+   "tel": "042-825-6266",
+   "prices": {
+    "gasoline": 1849,
+    "diesel": 1819
+   },
+   "status": "verified"
+  },
+  {
+   "id": "A0014039",
+   "name": "(주)에너비즈 삼성주유소",
+   "opinet_name": "(주)에너비즈 삼성주유소",
+   "ontong_name": "(주)에너비즈삼성주유소",
+   "addr": "대전 중구 계룡로 778 (오류동)",
+   "gu": "중구",
+   "lat": 36.329475,
+   "lng": 127.403474,
+   "lpg": false,
+   "brand": "SOL",
+   "tel": "042-537-5189",
+   "prices": {
+    "gasoline": 1815,
+    "diesel": 1819
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0013977",
+   "name": "HD현대오일뱅크㈜직영 충무주유소",
+   "opinet_name": "HD현대오일뱅크㈜직영 충무주유소",
+   "ontong_name": "현대정유(주)충무주유소",
+   "addr": "대전 중구 충무로 141 (부사동)",
+   "gu": "중구",
+   "lat": 36.319859,
+   "lng": 127.432177,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": "042-222-8788",
+   "prices": {
+    "gasoline": 1864,
+    "diesel": 1852
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0013986",
+   "name": "㈜남강 중앙로셀프주유소",
+   "opinet_name": "㈜남강 중앙로셀프주유소",
+   "ontong_name": "중앙로셀프주유소",
+   "addr": "대전 중구 중앙로 64",
+   "gu": "중구",
+   "lat": 36.323997,
+   "lng": 127.419205,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": "042-256-0238",
+   "prices": {
+    "gasoline": 1804,
+    "diesel": 1794
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0013733",
+   "name": "동물원주유소",
+   "opinet_name": "동물원주유소",
+   "ontong_name": "동물원주유소",
+   "addr": "대전 중구 대둔산로 270 (사정동)",
+   "gu": "중구",
+   "lat": 36.29375,
+   "lng": 127.383626,
+   "lpg": false,
+   "brand": "SKE",
+   "tel": "042-587-5151",
+   "prices": {
+    "gasoline": 1815,
+    "diesel": 1798
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0013672",
+   "name": "소망주유소",
+   "opinet_name": "소망주유소",
+   "ontong_name": "소망주유소",
+   "addr": "대전 중구 보문산로 307 (문화동)",
+   "gu": "중구",
+   "lat": 36.310775,
+   "lng": 127.412017,
+   "lpg": false,
+   "brand": "GSC",
+   "tel": "042-584-0413",
+   "prices": {
+    "gasoline": 1817,
+    "diesel": 1809
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0013856",
+   "name": "우리셋주유소",
+   "opinet_name": "우리셋주유소",
+   "ontong_name": "뿌리주유소",
+   "addr": "대전 중구 대둔산로 150",
+   "gu": "중구",
+   "lat": 36.284537,
+   "lng": 127.376631,
+   "lpg": false,
+   "brand": "SOL",
+   "tel": "042-581-0678",
+   "prices": {
+    "gasoline": 1808,
+    "diesel": 1797
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0013709",
+   "name": "이화주유소",
+   "opinet_name": "이화주유소",
+   "ontong_name": "이화주유소",
+   "addr": "대전 중구 대종로 166",
+   "gu": "중구",
+   "lat": 36.306582,
+   "lng": 127.448147,
+   "lpg": false,
+   "brand": "SKE",
+   "tel": "042-274-5189",
+   "prices": {
+    "gasoline": 1819,
+    "diesel": 1809
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0013985",
+   "name": "중촌셀프주유소",
+   "opinet_name": "중촌셀프주유소",
+   "ontong_name": "현대오일뱅크(주)직영중촌셀프주유",
+   "addr": "대전 중구 동서대로 1434 (선화동)",
+   "gu": "중구",
+   "lat": 36.335579,
+   "lng": 127.415067,
+   "lpg": false,
+   "brand": "HDO",
+   "tel": null,
+   "prices": {
+    "gasoline": 1810,
+    "diesel": 1808
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0016592",
+   "name": "천지인주유소",
+   "opinet_name": "천지인주유소",
+   "ontong_name": "천지인주유소",
+   "addr": "대전 중구 대종로 44",
+   "gu": "중구",
+   "lat": 36.297587,
+   "lng": 127.456045,
+   "lpg": false,
+   "brand": "SOL",
+   "tel": "042-272-6100",
+   "prices": {
+    "gasoline": 1802,
+    "diesel": 1790
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0013612",
+   "name": "충남주유소",
+   "opinet_name": "충남주유소",
+   "ontong_name": "충남주유소",
+   "addr": "대전 중구 대흥로 80 (대흥동)",
+   "gu": "중구",
+   "lat": 36.323092,
+   "lng": 127.42142,
+   "lpg": false,
+   "brand": "ETC",
+   "tel": "042-256-0101",
+   "prices": {
+    "gasoline": 1859,
+    "diesel": 1845
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0013621",
+   "name": "태성주유소",
+   "opinet_name": "태성주유소",
+   "ontong_name": "태성주유소",
+   "addr": "대전 중구 동서대로 1459 (중촌동)",
+   "gu": "중구",
+   "lat": 36.337579,
+   "lng": 127.416817,
+   "lpg": false,
+   "brand": "SOL",
+   "tel": "042-252-5189",
+   "prices": {
+    "gasoline": 1810,
+    "diesel": 1808
+   },
+   "status": "candidate"
+  },
+  {
+   "id": "A0013587",
+   "name": "하나로주유소",
+   "opinet_name": "하나로주유소",
+   "ontong_name": "하나로주유소",
+   "addr": "대전 중구 대둔산로 211 (안영동)",
+   "gu": "중구",
+   "lat": 36.289112,
+   "lng": 127.380154,
+   "lpg": false,
+   "brand": "SKE",
+   "tel": "042-581-5189",
+   "prices": {
+    "gasoline": 1815,
+    "diesel": 1799
+   },
+   "status": "candidate"
+  }
+ ],
+ "unmatched": [
+  {
+   "name": "주식회사 한마음석유 대신주유소",
+   "addr": "대전광역시 동구 계족로 126 (대동)",
+   "gu": "동구"
+  },
+  {
+   "name": "그린오일뱅크",
+   "addr": "대전광역시 동구 대전로 579 (천동)",
+   "gu": "동구"
+  },
+  {
+   "name": "대양가스충전소",
+   "addr": "대전광역시 동구 동대전로 312 (가양동)",
+   "gu": "동구"
+  },
+  {
+   "name": "성한 주유소",
+   "addr": "대전광역시 동구 동대전로 320 (가양동)",
+   "gu": "동구"
+  },
+  {
+   "name": "태암 주유소",
+   "addr": "대전광역시 동구 대전로 264 (대성동)",
+   "gu": "동구"
+  },
+  {
+   "name": "대성셀프주유소",
+   "addr": "대전광역시 동구 대전로292 (대성동)",
+   "gu": "동구"
+  },
+  {
+   "name": "현대오일뱅크(주)직영산내셀프주유",
+   "addr": "대전광역시 동구 대전로 292 (대성동)",
+   "gu": "동구"
+  },
+  {
+   "name": "현대오일뱅크(주)직영 동원주유소",
+   "addr": "대전광역시 동구 옥천로 355-3 (삼정동,동원주유소)",
+   "gu": "동구"
+  },
+  {
+   "name": "판암ICLPG충전소",
+   "addr": "대전광역시 동구 옥천로 309 (삼정동)",
+   "gu": "동구"
+  },
+  {
+   "name": "고속가스충전소",
+   "addr": "대전광역시 동구 동서대로 1660 (성남동)",
+   "gu": "동구"
+  },
+  {
+   "name": "㈜인선 괴정 셀프주유소",
+   "addr": "대전광역시 동구 계족로 305 (성남동)",
+   "gu": "동구"
+  },
+  {
+   "name": "동건셀프주유소",
+   "addr": "대전광역시 동구 중앙로 280 (소제동)",
+   "gu": "동구"
+  },
+  {
+   "name": "일등주유소",
+   "addr": "대전광역시 동구 계족로 249 (소제동)",
+   "gu": "동구"
+  },
+  {
+   "name": "에스케이(SK)대동주유소",
+   "addr": "대전광역시 동구 계족로140번길 73 (용운동)",
+   "gu": "동구"
+  },
+  {
+   "name": "태양주유소",
+   "addr": "대전광역시 동구 한밭대로 1258 (용전동)",
+   "gu": "동구"
+  },
+  {
+   "name": "참좋은주유소",
+   "addr": "대전광역시 동구 계족로 501 (용전동)",
+   "gu": "동구"
+  },
+  {
+   "name": "창대주유소",
+   "addr": "대전광역시 동구 새울로 22,(판암1동)",
+   "gu": "동구"
+  },
+  {
+   "name": "케이앤엘에너지(주)용전셀프주유소",
+   "addr": "대전광역시 동구 동서대로 1627 (홍도동)",
+   "gu": "동구"
+  },
+  {
+   "name": "현대오일뱅크(주)직영홍도셀프주유",
+   "addr": "대전광역시 동구 동서대로 1627, 홍도주유소 (홍도동)",
+   "gu": "동구"
+  },
+  {
+   "name": "지에스칼텍스(주)내동주유소",
+   "addr": "대전광역시 서구 내동 218-2 .4",
+   "gu": "서구"
+  },
+  {
+   "name": "황금주유소",
+   "addr": "대전광역시 서구 동서대로 1081 (내동)",
+   "gu": "서구"
+  },
+  {
+   "name": "유진 주유소",
+   "addr": "대전광역시 서구 동서대로 1069 (내동)",
+   "gu": "서구"
+  },
+  {
+   "name": "대전가스충전소",
+   "addr": "대전광역시 서구 도산로 218 (변동)",
+   "gu": "서구"
+  },
+  {
+   "name": "우리 주유소",
+   "addr": "대전광역시 서구 도산로 216,(변동)",
+   "gu": "서구"
+  },
+  {
+   "name": "가득주유소",
+   "addr": "대전광역시 서구 갈마로 322 (가장동)",
+   "gu": "서구"
+  },
+  {
+   "name": "중도석유(주)가장주유소",
+   "addr": "대전광역시 서구 갈마로 321 (가장동)",
+   "gu": "서구"
+  },
+  {
+   "name": "(주)대전개인택시충전소 가장지점",
+   "addr": "대전광역시 서구 갈마로 335 (가장동)",
+   "gu": "서구"
+  },
+  {
+   "name": "도마주유소",
+   "addr": "대전광역시 서구 도산로 27,(도마동)",
+   "gu": "서구"
+  },
+  {
+   "name": "교통카드충전소",
+   "addr": "대전광역시 서구 청사로 281, 샘머리아파트 승강장 옆(둔산동)",
+   "gu": "서구"
+  },
+  {
+   "name": "타임셀프주유소",
+   "addr": "대전광역시 서구 대덕대로 188 (둔산동)",
+   "gu": "서구"
+  },
+  {
+   "name": "현대오일뱅크 (주)직영 대전청사셀",
+   "addr": "대전광역시 서구 대덕대로 188 (둔산동,,대전청사주유소)",
+   "gu": "서구"
+  },
+  {
+   "name": "SK에너지(주) 해운대센텀주유소",
+   "addr": "대전광역시 서구 둔산로 139 (둔산동)",
+   "gu": "서구"
+  },
+  {
+   "name": "현대오일뱅크(주)직영 만년교셀프",
+   "addr": "대전광역시 서구 계룡로 202, 만년교주유소 (월평동)",
+   "gu": "서구"
+  },
+  {
+   "name": "지에스칼텍스 (주)정림주유소",
+   "addr": "대전광역시 서구 정림동 293-4,5",
+   "gu": "서구"
+  },
+  {
+   "name": "대흥쟈이주유소",
+   "addr": "대전광역시 중구 대흥로 132, 1층 (대흥동)",
+   "gu": "중구"
+  },
+  {
+   "name": "(주)퍼스트오일 직영 도서관주유소",
+   "addr": "대전광역시 중구 보문산로 353 (문화동)",
+   "gu": "중구"
+  },
+  {
+   "name": "보문주유소",
+   "addr": "대전광역시 중구 보문로 59, 1층 (부사동)",
+   "gu": "중구"
+  },
+  {
+   "name": "중도석유(주)산성주유소",
+   "addr": "대전광역시 중구 대둔산로 406 (산성동)",
+   "gu": "중구"
+  },
+  {
+   "name": "(주)메이저플러스 명품주유소",
+   "addr": "대전광역시 중구 보문로 301 (선화동)",
+   "gu": "중구"
+  },
+  {
+   "name": "안영ic주유소",
+   "addr": "대전광역시 중구 대둔산로 188,(안영동)",
+   "gu": "중구"
+  },
+  {
+   "name": "(주)대전개인택시충전소",
+   "addr": "대전광역시 중구 대둔산로 130 (안영동)",
+   "gu": "중구"
+  },
+  {
+   "name": "대명가스충전소",
+   "addr": "대전광역시 중구 오류로 95 (오류동)",
+   "gu": "중구"
+  },
+  {
+   "name": "대전 명성셀프주유소",
+   "addr": "대전광역시 중구 대종로 103 (옥계동)",
+   "gu": "중구"
+  },
+  {
+   "name": "(주)안국에너지 용두동주유소",
+   "addr": "대전광역시 중구 계룡로 787 (용두동,,3)",
+   "gu": "중구"
+  },
+  {
+   "name": "버드내셀프주유소",
+   "addr": "대전광역시 중구 계백로 1520 (유천동)",
+   "gu": "중구"
+  },
+  {
+   "name": "에스케이(SK)대진충전소",
+   "addr": "대전광역시 중구 대전천서로 755 (중촌동)",
+   "gu": "중구"
+  },
+  {
+   "name": "태평셀프주유소",
+   "addr": "대전광역시 중구 동서대로 1244 (태평동)",
+   "gu": "중구"
+  },
+  {
+   "name": "주홍주유소",
+   "addr": "대전광역시 대덕구 신탄진로 383 (와동)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "대전LPG충전소",
+   "addr": "대전광역시 대덕구 대화로50번길 90 (대화동)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "현대오일뱅크(주)직영 신탄진주유소",
+   "addr": "대전광역시 대덕구 신탄진로681번길 22, 신탄진주유소 (덕암동)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "현대오일뱅크(주)직영 대원셀프주",
+   "addr": "대전광역시 대덕구 동서대로 1772 (비래동,대원주유소)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "지에스칼텍스(주)톨게이트주유소",
+   "addr": "대전광역시 대덕구 동서대로 1762 (비래동)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "(주)에스에이치에너지영풍주유소",
+   "addr": "대전광역시 대덕구 신탄진로 584 (상서동)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "상서충전소",
+   "addr": "대전광역시 대덕구 신탄진로 484 (상서동)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "갑천(상)LPG충전소",
+   "addr": "대전광역시 대덕구 신대동 426,427-1,427-5",
+   "gu": "대덕구"
+  },
+  {
+   "name": "대전도시공사신대수소충전소",
+   "addr": "대전광역시 대덕구 신탄진로315번길 72, 신대수소버스충전소 (신대동)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "동대전주유소",
+   "addr": "대전광역시 대덕구 신탄진로 60 (연축동)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "주식회사 연정 에스에스주유소",
+   "addr": "대전광역시 대덕구 한밭대로 1020 (오정동)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "정동가스충전소",
+   "addr": "대전광역시 대덕구 대전로1020번길 47 (오정동)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "(주)대전개인택시 동대전충전소",
+   "addr": "대전광역시 대덕구 대전로 1108 (오정동)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "현대오일뱅크(주)직영 럭키셀프주",
+   "addr": "대전광역시 대덕구 한밭대로 1007 (오정동,,럭키주유소)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "GS칼텍스 한솔주유소",
+   "addr": "대전광역시 대덕구 한밭대로 1036 (오정동)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "장터주유소",
+   "addr": "대전광역시 대덕구 아리랑로 152 (읍내동)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "대화공단LPG충전소",
+   "addr": "대전광역시 대덕구 아리랑로 63 (읍내동)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "㈜ SDA 일등주유소",
+   "addr": "대전광역시 대덕구 한밭대로 1145 (중리동)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "재하주유소",
+   "addr": "대전광역시 대덕구 한밭대로 1180 (중리동,주유소)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "중리셀프주유소",
+   "addr": "대전광역시 대덕구 한밭대로 1186 (중리동)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "신탄진IC주유소",
+   "addr": "대전광역시 대덕구 신탄진로 665 (평촌동)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "일등주유소",
+   "addr": "대전광역시 대덕구 신탄진로 636,(평촌동)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "대도주유소",
+   "addr": "대전광역시 대덕구 신탄진로756번길 2 (신탄진동)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "시온가스충전소",
+   "addr": "대전광역시 대덕구 신탄진로 737 (신탄진동)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "성찬셀프주유소",
+   "addr": "대전광역시 대덕구 신탄진로 764 (신탄진동)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "대전북부새마을금고주유소",
+   "addr": "대전광역시 대덕구 신탄진로 792 (신탄진동)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "하이오일(주)신탄진주유소",
+   "addr": "대전광역시 대덕구 대덕대로1527번길 374, 1층 (신탄진동)",
+   "gu": "대덕구"
+  },
+  {
+   "name": "유성충전소",
+   "addr": "대전광역시 유성구 현충원로 168 (갑동)",
+   "gu": "유성구"
+  },
+  {
+   "name": "계림주유소",
+   "addr": "대전광역시 유성구 현충원로 201 (갑동)",
+   "gu": "유성구"
+  },
+  {
+   "name": "지에스칼텍스(주)유성온천주유소",
+   "addr": "대전광역시 유성구 도안대로 583 (봉명동)",
+   "gu": "유성구"
+  },
+  {
+   "name": "유성온천주유소",
+   "addr": "대전광역시 유성구 도안대로 583 (봉명동)",
+   "gu": "유성구"
+  },
+  {
+   "name": "예성주유소",
+   "addr": "대전광역시 유성구 도안동로 488 (봉명동)",
+   "gu": "유성구"
+  },
+  {
+   "name": "현대오일뱅크(주)직영 첨단셀프주",
+   "addr": "대전광역시 유성구 가정로 27, 첨단주유소 (신성동)",
+   "gu": "유성구"
+  },
+  {
+   "name": "지에스칼텍스 (주)원내동주유소",
+   "addr": "대전광역시 유성구 유성대로 6 (원내동)",
+   "gu": "유성구"
+  },
+  {
+   "name": "지에스칼텍스 (주)한빛주유소",
+   "addr": "대전광역시 유성구 원촌동 135,136-2",
+   "gu": "유성구"
+  },
+  {
+   "name": "한빛주유소",
+   "addr": "대전광역시 유성구 엑스포로 315 (원촌동)",
+   "gu": "유성구"
+  },
+  {
+   "name": "유성IC충전소",
+   "addr": "대전광역시 유성구 현충원로 509 (장대동)",
+   "gu": "유성구"
+  },
+  {
+   "name": "주식회사 에스엘 성림주유소",
+   "addr": "대전광역시 유성구 유성대로752번길 6, (장대동)",
+   "gu": "유성구"
+  },
+  {
+   "name": "대전도시공사학하수소충전소",
+   "addr": "대전광역시 유성구 학하동 400-2",
+   "gu": "유성구"
+  },
+  {
+   "name": "지에스칼텍스(주)대덕밸리주유소",
+   "addr": "대전광역시 유성구 대덕대로 938 (화암동)",
+   "gu": "유성구"
+  },
+  {
+   "name": "대덕밸리주유소",
+   "addr": "대전광역시 유성구 대덕대로 938 (화암동)",
+   "gu": "유성구"
+  }
+ ]
+}

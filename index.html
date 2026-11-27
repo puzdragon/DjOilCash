@@ -117,9 +117,12 @@ const TAG={verified:['v','캐시백'],eligible:['v','캐시백'],excluded:['c','
 const DESC={verified:'캐시백 적립 확인된 주유소',eligible:'온통대전 가맹점 · 캐시백 불가(연매출 30억 초과) 목록에 없음',
   excluded:'연매출 30억 초과 가맹점이라 대전사랑카드 캐시백 없음',candidate:'온통대전 가맹점 · 캐시백 여부 미확인'};
 let EX=null; // 캐시백 불가 목록 {road:Set, name:Set, base}
+// 같은 구에서 도로명+번지가 같거나 상호가 같으면 불가 목록에 있는 것으로 본다.
+// 정유사 직영점(이름에 '직영')은 모두 연매출 30억을 넘으므로 목록에 없어도 불가로 본다(목록에 없는 직영점은 옛 가맹점 기록).
 function isExcl(s){if(!EX)return false;const g=s.gu||'',rk=roadKey(s.addr),nm=normName(s.name);
+  if(/직영/.test(s.name))return true;
   if(rk&&EX.road.has(g+'|'+rk))return true;
-  return nm.length>=2&&EX.name.has(g+'|'+nm)&&(!rk||!EX.hasRoad.has(g+'|'+nm));}
+  return nm.length>=2&&EX.name.has(g+'|'+nm);}
 const priceOf=s=>(P[s.id]||{})[st.fuel];
 // 고른 연료를 파는 곳인지: 가격이 있으면 가격 기준, 가격이 하나도 없으면 LPG 충전소 여부로 판단
 const PK=['gasoline','diesel','lpg','premium'];
@@ -226,9 +229,9 @@ async function placeCandidates(){
 
 async function loadExcluded(){
   try{const x=await fetch('data/cashback_excluded.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()});
-    EX={road:new Set(),name:new Set(),hasRoad:new Set(),base:x.base_date};
+    EX={road:new Set(),name:new Set(),base:x.base_date};
     (x.stations||[]).forEach(e=>{const g=e.gu||'',rk=roadKey(e.addr),nm=normName(e.name);
-      if(rk)EX.road.add(g+'|'+rk);if(nm.length>=2){EX.name.add(g+'|'+nm);if(rk)EX.hasRoad.add(g+'|'+nm);}});
+      if(rk)EX.road.add(g+'|'+rk);if(nm.length>=2)EX.name.add(g+'|'+nm);});
   }catch(e){EX=null;}
 }
 async function boot(){
